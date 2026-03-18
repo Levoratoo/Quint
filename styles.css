@@ -1055,7 +1055,8 @@ section {
 .stream-panel.active {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    width: 100%;
+    align-items: center;
 }
 
 /* ---- SoundCloud grid ---- */
@@ -1063,6 +1064,8 @@ section {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.2rem;
+    width: fit-content;
+    margin-inline: auto;
     margin-bottom: 1.5rem;
 }
 
@@ -1125,7 +1128,7 @@ section {
     transition: all 0.25s ease;
     margin-top: 0.5rem;
     /* centralizado e sem overflow no mobile */
-    align-self: flex-start;
+    align-self: center;
 }
 
 .stream-cta:hover {
@@ -1157,7 +1160,10 @@ section {
 
 @media (max-width: 768px) {
     .sc-grid,
-    .sc-grid--2 { grid-template-columns: 1fr; }
+    .sc-grid--2 {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
 }
 
 .music-grid {
@@ -2531,15 +2537,29 @@ section {
         grid-row: 2;
         margin-top: 1.5rem;
     }
-    .tl-vc-mask { height: 280px; overflow-x: hidden; }
+    .tl-vc-mask {
+        height: 280px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        mask-image: none;
+        -webkit-mask-image: none;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        scroll-snap-type: x proximity;
+        -webkit-overflow-scrolling: touch;
+    }
+    .tl-vc-mask::-webkit-scrollbar { display: none; }
     .tl-vc-track {
+        width: max-content;
+        min-width: max-content;
         flex-direction: row;
-        animation-name: vc-h-left !important;
+        animation: none !important;
     }
-    .tl-vc-track--down {
-        animation-name: vc-h-right !important;
+    .tl-vc-item {
+        width: clamp(160px, 42vw, 220px);
+        flex-shrink: 0;
+        scroll-snap-align: start;
     }
-    .tl-vc-item { width: clamp(160px, 42vw, 220px); flex-shrink: 0; }
     .tl-vc-item img { width: clamp(160px, 42vw, 220px); height: 260px; aspect-ratio: unset; }
 
     .tl-spine { left: clamp(1.5rem, 4vw, 3rem); }
