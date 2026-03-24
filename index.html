@@ -40,26 +40,35 @@
             <a href="#hero" class="nav-logo">
             </a>
 
-            <!-- Language Switcher (left side) -->
+            <!-- Language Switcher — dropdown -->
             <div class="lang-switcher" id="lang-switcher">
-                <button class="lang-btn lang-btn--active" data-lang="pt" aria-label="Português">
-                    <span class="fi fi-br fis lang-flag"></span><span class="lang-code">PT</span>
+                <button class="lang-trigger" id="lang-trigger" aria-haspopup="listbox" aria-expanded="false">
+                    <span class="fi fi-br fis lang-flag" id="trigger-flag"></span>
+                    <span class="lang-code" id="trigger-code">PT</span>
+                    <svg class="lang-chevron" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
                 </button>
-                <button class="lang-btn" data-lang="en" aria-label="English">
-                    <span class="fi fi-us fis lang-flag"></span><span class="lang-code">EN</span>
-                </button>
-                <button class="lang-btn" data-lang="es" aria-label="Español">
-                    <span class="fi fi-es fis lang-flag"></span><span class="lang-code">ES</span>
-                </button>
-                <button class="lang-btn" data-lang="zh" aria-label="中文">
-                    <span class="fi fi-cn fis lang-flag"></span><span class="lang-code">中文</span>
-                </button>
-                <button class="lang-btn" data-lang="de" aria-label="Deutsch">
-                    <span class="fi fi-de fis lang-flag"></span><span class="lang-code">DE</span>
-                </button>
-                <button class="lang-btn" data-lang="ja" aria-label="日本語">
-                    <span class="fi fi-jp fis lang-flag"></span><span class="lang-code">JP</span>
-                </button>
+                <div class="lang-dropdown" id="lang-dropdown" role="listbox">
+                    <button class="lang-option lang-option--active" data-lang="pt" role="option">
+                        <span class="fi fi-br fis lang-flag"></span><span>Português</span>
+                    </button>
+                    <button class="lang-option" data-lang="en" role="option">
+                        <span class="fi fi-us fis lang-flag"></span><span>English</span>
+                    </button>
+                    <button class="lang-option" data-lang="es" role="option">
+                        <span class="fi fi-es fis lang-flag"></span><span>Español</span>
+                    </button>
+                    <button class="lang-option" data-lang="zh" role="option">
+                        <span class="fi fi-cn fis lang-flag"></span><span>中文</span>
+                    </button>
+                    <button class="lang-option" data-lang="de" role="option">
+                        <span class="fi fi-de fis lang-flag"></span><span>Deutsch</span>
+                    </button>
+                    <button class="lang-option" data-lang="ja" role="option">
+                        <span class="fi fi-jp fis lang-flag"></span><span>日本語</span>
+                    </button>
+                </div>
             </div>
 
             <!-- Nav links (right side) -->

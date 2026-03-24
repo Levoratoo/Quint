@@ -882,14 +882,24 @@ const i18n = {
     },
 };
 
+// Maps lang code → [flag class, short code]
+const langMeta = {
+    pt: ['fi-br', 'PT'],
+    en: ['fi-us', 'EN'],
+    es: ['fi-es', 'ES'],
+    zh: ['fi-cn', '中文'],
+    de: ['fi-de', 'DE'],
+    ja: ['fi-jp', 'JP'],
+};
+
 function applyLang(lang) {
     const t = i18n[lang];
+    if (!t) return;
 
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.dataset.i18n;
         const val = t[key];
         if (val === undefined) return;
-        // Use innerHTML for strings that contain HTML tags
         if (/<[^>]+>/.test(val)) {
             el.innerHTML = val;
         } else {
@@ -901,9 +911,18 @@ function applyLang(lang) {
     const glitch = document.getElementById('tl-glitch');
     if (glitch) glitch.dataset.text = t['tension-now'] || glitch.dataset.text;
 
-    // Update active button style
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.toggle('lang-btn--active', btn.dataset.lang === lang);
+    // Update trigger pill display
+    const meta = langMeta[lang] || ['fi-br', 'PT'];
+    const triggerFlag = document.getElementById('trigger-flag');
+    const triggerCode = document.getElementById('trigger-code');
+    if (triggerFlag) {
+        triggerFlag.className = `fi ${meta[0]} fis lang-flag`;
+    }
+    if (triggerCode) triggerCode.textContent = meta[1];
+
+    // Update active option highlight in dropdown
+    document.querySelectorAll('.lang-option').forEach(opt => {
+        opt.classList.toggle('lang-option--active', opt.dataset.lang === lang);
     });
 
     const langMap = { pt: 'pt-BR', en: 'en', es: 'es', zh: 'zh-CN', de: 'de', ja: 'ja' };
@@ -912,10 +931,44 @@ function applyLang(lang) {
 }
 
 function initI18n() {
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+    const switcher = document.getElementById('lang-switcher');
+    const trigger  = document.getElementById('lang-trigger');
+    const dropdown = document.getElementById('lang-dropdown');
+    if (!switcher || !trigger || !dropdown) return;
+
+    // Toggle dropdown on trigger click
+    trigger.addEventListener('click', e => {
+        e.stopPropagation();
+        const isOpen = switcher.classList.toggle('open');
+        trigger.setAttribute('aria-expanded', isOpen);
     });
 
+    // Select language from dropdown
+    dropdown.querySelectorAll('.lang-option').forEach(opt => {
+        opt.addEventListener('click', () => {
+            applyLang(opt.dataset.lang);
+            switcher.classList.remove('open');
+            trigger.setAttribute('aria-expanded', 'false');
+        });
+    });
+
+    // Close on outside click
+    document.addEventListener('click', e => {
+        if (!switcher.contains(e.target)) {
+            switcher.classList.remove('open');
+            trigger.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+            switcher.classList.remove('open');
+            trigger.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    // Apply saved language
     const saved = localStorage.getItem('levorato-lang') || 'pt';
     if (saved !== 'pt') applyLang(saved);
 }
