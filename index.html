@@ -17,6 +17,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- Flag Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
+
     <!-- Font Awesome (async load to unblock render) -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
@@ -36,11 +39,18 @@
         <div class="nav-container">
             <a href="#hero" class="nav-logo">
             </a>
-            <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+
+            <!-- Language Switcher (left side) -->
+            <div class="lang-switcher" id="lang-switcher">
+                <button class="lang-btn lang-btn--active" data-lang="pt" aria-label="Português">
+                    <span class="fi fi-br fis lang-flag"></span><span class="lang-code">PT</span>
+                </button>
+                <button class="lang-btn" data-lang="en" aria-label="English">
+                    <span class="fi fi-us fis lang-flag"></span><span class="lang-code">EN</span>
+                </button>
+            </div>
+
+            <!-- Nav links (right side) -->
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="#historia" class="nav-link" data-i18n="nav-historia">História</a></li>
                 <li><a href="#sobre" class="nav-link" data-i18n="nav-sobre">Sobre</a></li>
@@ -48,15 +58,11 @@
                 <li><a href="#booking" class="nav-link nav-cta">Booking</a></li>
             </ul>
 
-            <!-- Language Switcher -->
-            <div class="lang-switcher" id="lang-switcher">
-                <button class="lang-btn lang-btn--active" data-lang="pt" aria-label="Português">
-                    <span class="lang-flag">🇧🇷</span><span class="lang-code">PT</span>
-                </button>
-                <button class="lang-btn" data-lang="en" aria-label="English">
-                    <span class="lang-flag">🇺🇸</span><span class="lang-code">EN</span>
-                </button>
-            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
 
