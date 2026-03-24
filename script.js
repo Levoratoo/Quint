@@ -121,23 +121,23 @@ navMenu.querySelectorAll('.nav-link').forEach(link => {
 });
 
 // ============================================================
-// SMOOTH SCROLL (offset for fixed navbar)
+// SMOOTH SCROLL (navbar + scroll-padding-top em html)
 // ============================================================
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const id     = this.getAttribute('href');
+        if (!id || id === '#' || id.length < 2) return;
+
         const target = document.querySelector(id);
         if (!target) return;
 
         e.preventDefault();
 
-        const navEl = document.getElementById('navbar');
-        const navH  = navEl ? navEl.offsetHeight : 68;
-
-        window.scrollTo({
-            top:      target.getBoundingClientRect().top + window.scrollY - navH,
-            behavior: 'smooth',
+        const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        target.scrollIntoView({
+            behavior: prefersReduced ? 'auto' : 'smooth',
+            block: 'start',
         });
     });
 });
