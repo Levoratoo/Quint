@@ -526,6 +526,23 @@ function initStreamTabs() {
     });
 }
 
+function initDownloadsTabs() {
+    const tabs = document.querySelectorAll('.downloads-tab');
+    const panels = document.querySelectorAll('.downloads-panel');
+    if (!tabs.length || !panels.length) return;
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = tab.dataset.dlPanel;
+            tabs.forEach(t => t.classList.remove('active'));
+            panels.forEach(p => p.classList.remove('active'));
+            tab.classList.add('active');
+            const panel = document.getElementById('dl-panel-' + target);
+            if (panel) panel.classList.add('active');
+        });
+    });
+}
+
 // ============================================================
 // INTERNATIONALIZATION (i18n)
 // ============================================================
@@ -570,6 +587,12 @@ const i18n = {
         'dl-desc'            : 'Baixe individualmente ou o pacote completo sem perda de qualidade.',
         'dl-cta'             : 'Baixar todas as fotos (.zip)',
         'dl-btn'             : 'Baixar',
+        'dl-tab-photos'      : 'Minhas fotos',
+        'dl-tab-logo'        : 'Logo',
+        'dl-logo-tag'        : 'LOGO OFICIAL',
+        'dl-logo-title'      : 'Logo oficial para midia e contratantes',
+        'dl-logo-desc'       : 'Baixe a logo oficial separada das fotos para aplicar em flyers, lineups, artes e materiais de divulgacao.',
+        'dl-logo-btn'        : 'Baixar logo (.png)',
         'fs-tag': 'DESTAQUE',
         'fs-new': 'NOVO SET',
         'fs-title1': 'DJ CONTEST',
@@ -634,6 +657,12 @@ const i18n = {
         'dl-desc'            : 'Download individually or the full package without quality loss.',
         'dl-cta'             : 'Download all photos (.zip)',
         'dl-btn'             : 'Download',
+        'dl-tab-photos'      : 'My photos',
+        'dl-tab-logo'        : 'Logo',
+        'dl-logo-tag'        : 'OFFICIAL LOGO',
+        'dl-logo-title'      : 'Official logo for media and bookers',
+        'dl-logo-desc'       : 'Download the official logo separately from photos for flyers, lineups, artworks and promo materials.',
+        'dl-logo-btn'        : 'Download logo (.png)',
         'fs-tag': 'FEATURED',
         'fs-new': 'NEW SET',
         'fs-title1': 'DJ CONTEST',
@@ -698,6 +727,12 @@ const i18n = {
         'dl-desc'            : 'Descarga individualmente o el paquete completo sin pérdida de calidad.',
         'dl-cta'             : 'Descargar todas las fotos (.zip)',
         'dl-btn'             : 'Descargar',
+        'dl-tab-photos'      : 'Mis fotos',
+        'dl-tab-logo'        : 'Logo',
+        'dl-logo-tag'        : 'LOGO OFICIAL',
+        'dl-logo-title'      : 'Logo oficial para prensa y bookers',
+        'dl-logo-desc'       : 'Descarga el logo oficial separado de las fotos para usar en flyers, lineups, artes y materiales promocionales.',
+        'dl-logo-btn'        : 'Descargar logo (.png)',
         'fs-tag': 'DESTACADO',
         'fs-new': 'NUEVO SET',
         'fs-title1': 'DJ CONTEST',
@@ -762,6 +797,12 @@ const i18n = {
         'dl-desc'            : '单独下载或下载完整套装，无损画质。',
         'dl-cta'             : '下载所有照片（.zip）',
         'dl-btn'             : '下载',
+        'dl-tab-photos'      : '我的照片',
+        'dl-tab-logo'        : 'Logo',
+        'dl-logo-tag'        : '官方 LOGO',
+        'dl-logo-title'      : '面向演出方与媒体的官方 Logo',
+        'dl-logo-desc'       : '将官方 logo 与照片分开下载，用于海报、阵容图与宣传物料。',
+        'dl-logo-btn'        : '下载 logo (.png)',
         'fs-tag': '精选',
         'fs-new': '新曲集',
         'fs-title1': 'DJ 竞赛',
@@ -826,6 +867,12 @@ const i18n = {
         'dl-desc'            : 'Einzeln oder als komplettes Paket ohne Qualitätsverlust herunterladen.',
         'dl-cta'             : 'Alle Fotos herunterladen (.zip)',
         'dl-btn'             : 'Herunterladen',
+        'dl-tab-photos'      : 'Meine Fotos',
+        'dl-tab-logo'        : 'Logo',
+        'dl-logo-tag'        : 'OFFIZIELLES LOGO',
+        'dl-logo-title'      : 'Offizielles Logo für Presse und Booker',
+        'dl-logo-desc'       : 'Lade das offizielle Logo getrennt von den Fotos herunter für Flyer, Lineups, Artworks und Promo-Material.',
+        'dl-logo-btn'        : 'Logo herunterladen (.png)',
         'fs-tag': 'HIGHLIGHT',
         'fs-new': 'NEUES SET',
         'fs-title1': 'DJ CONTEST',
@@ -890,6 +937,12 @@ const i18n = {
         'dl-desc'            : '個別またはフルパッケージを画質を損なわずにダウンロード。',
         'dl-cta'             : 'すべての写真をダウンロード（.zip）',
         'dl-btn'             : 'ダウンロード',
+        'dl-tab-photos'      : '写真',
+        'dl-tab-logo'        : 'ロゴ',
+        'dl-logo-tag'        : '公式ロゴ',
+        'dl-logo-title'      : 'ブッカーとメディア向け公式ロゴ',
+        'dl-logo-desc'       : 'フライヤー、ラインナップ、告知素材に使える公式ロゴを写真と分けてダウンロード。',
+        'dl-logo-btn'        : 'ロゴをダウンロード (.png)',
         'fs-tag': '注目',
         'fs-new': '新着セット',
         'fs-title1': 'DJコンテスト',
@@ -1025,6 +1078,7 @@ function init() {
     initTensionEntry();
     initHeroParticles();
     initStreamTabs();
+    initDownloadsTabs();
     initI18n();
 }
 

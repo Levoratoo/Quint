@@ -490,14 +490,24 @@
                 <p class="section-desc" data-i18n="dl-desc">Baixe individualmente ou o pacote completo sem perda de qualidade.</p>
             </div>
 
-            <div class="downloads-cta reveal-up">
-                <a href="downloads/levorato-fotos-alta.zip" class="btn btn-primary" download>
-                    <i class="fas fa-download"></i>
-                    <span data-i18n="dl-cta">Baixar todas as fotos (.zip)</span>
-                </a>
+            <div class="downloads-tabs reveal-up" id="downloads-tabs">
+                <button class="downloads-tab active" data-dl-panel="photos">
+                    <span data-i18n="dl-tab-photos">Minhas fotos</span>
+                </button>
+                <button class="downloads-tab" data-dl-panel="logo">
+                    <span data-i18n="dl-tab-logo">Logo</span>
+                </button>
             </div>
 
-            <div class="downloads-grid">
+            <div class="downloads-panel active" id="dl-panel-photos">
+                <div class="downloads-cta reveal-up">
+                    <a href="downloads/levorato-fotos-alta.zip" class="btn btn-primary" download>
+                        <i class="fas fa-download"></i>
+                        <span data-i18n="dl-cta">Baixar todas as fotos (.zip)</span>
+                    </a>
+                </div>
+
+                <div class="downloads-grid">
                 <article class="download-card reveal-up" style="--delay: 0.05s" data-num="01">
                     <img src="Fotos para baixar/KAD00098-1.JPG" alt="Foto de imprensa 01" loading="lazy" class="download-photo">
                     <a href="Fotos para baixar/KAD00098-1.JPG" download class="download-btn"><i class="fas fa-download"></i> <span data-i18n="dl-btn">Baixar</span></a>
@@ -538,6 +548,20 @@
                     <img src="Fotos para baixar/KAD00156-10.JPG" alt="Foto de imprensa 10" loading="lazy" class="download-photo">
                     <a href="Fotos para baixar/KAD00156-10.JPG" download class="download-btn"><i class="fas fa-download"></i> <span data-i18n="dl-btn">Baixar</span></a>
                 </article>
+                </div>
+            </div>
+
+            <div class="downloads-panel" id="dl-panel-logo">
+                <div class="downloads-grid downloads-grid--single">
+                    <article class="download-card reveal-up" data-num="PRETA">
+                        <img src="Logo/preta.png" alt="Logo oficial Levorato" loading="lazy" class="download-photo download-photo--logo">
+                        <a href="Logo/preta.png" download class="download-btn"><i class="fas fa-download"></i> <span data-i18n="dl-logo-btn">Baixar logo (.png)</span></a>
+                    </article>
+                    <article class="download-card reveal-up" data-num="BRANCA">
+                        <img src="Logo/branca.png" alt="Logo oficial Levorato branca" loading="lazy" class="download-photo download-photo--logo download-photo--logo-white">
+                        <a href="Logo/branca.png" download class="download-btn"><i class="fas fa-download"></i> <span data-i18n="dl-logo-btn">Baixar logo (.png)</span></a>
+                    </article>
+                </div>
             </div>
         </div>
     </section>
