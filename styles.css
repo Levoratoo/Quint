@@ -2762,16 +2762,6 @@ section {
 }
 
 /* ---- Educação musical — mesmo layout da timeline (spine + nós + carrossel) ---- */
-#tl-panel-education .tl-edu-lead {
-    text-align: center;
-    color: rgba(255, 255, 255, 0.55);
-    font-size: 0.98rem;
-    line-height: 1.65;
-    margin: 0 auto 2.5rem;
-    max-width: 52ch;
-    padding: 0 clamp(1rem, 4vw, 2rem);
-}
-
 .tl-spine-wrapper--edu {
     padding-bottom: 2rem;
 }
@@ -3557,13 +3547,6 @@ a.tl-edu-text-wrap:focus-visible {
     }
     #tl-panel-education {
         padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
-    }
-    #tl-panel-education .tl-edu-lead {
-        font-size: 0.9rem;
-        margin-bottom: 1.75rem;
-        max-width: none;
-        padding-left: max(0.75rem, env(safe-area-inset-left));
-        padding-right: max(0.75rem, env(safe-area-inset-right));
     }
     .tl-node--edu .tl-chapter-tag--edu {
         font-size: 0.58rem;

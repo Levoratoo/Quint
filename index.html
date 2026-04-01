@@ -213,7 +213,7 @@
             </button>
         </div>
 
-        <div class="downloads-panel tl-timeline-panel active" id="tl-panel-performance" role="tabpanel" aria-labelledby="tab-tl-performance" aria-hidden="false">
+        <div class="downloads-panel tl-timeline-panel active" id="tl-panel-performance" data-tl-panel="performance" role="tabpanel" aria-labelledby="tab-tl-performance" aria-hidden="false">
 
         <!-- Wrapper que contém a spine + os dois nodes (2011 e 2022) -->
         <div class="tl-spine-wrapper">
@@ -312,7 +312,9 @@
 
         </div><!-- end tl-spine-wrapper -->
 
-        <!-- ======= TENSION BLOCK ======= -->
+        </div><!-- /#tl-panel-performance (só 2011 + 2022; tensão fica fora para aparecer em ambas as abas) -->
+
+        <!-- ======= TENSION BLOCK (fora dos painéis com display:none — visível em Performance e Educação) ======= -->
         <div class="tl-chapter tl-chapter--tension" id="tl-ch3">
             <div class="tl-tension-bg"></div>
             <div class="tl-scanlines"></div>
@@ -330,6 +332,8 @@
                 <div class="tl-tension-arrow"><i class="fas fa-chevron-down"></i></div>
             </div>
         </div>
+
+        <div class="downloads-panel tl-timeline-panel active" id="tl-panel-performance-dj" data-tl-panel="performance" role="tabpanel" aria-labelledby="tab-tl-performance" aria-hidden="false">
 
         <!-- ======= NODE 3: NOVO CICLO ======= -->
         <div class="tl-node tl-node--dj" id="tl-ch4">
@@ -371,10 +375,9 @@
             </div>
         </div>
 
-        </div><!-- /#tl-panel-performance -->
+        </div><!-- /#tl-panel-performance-dj -->
 
-        <div class="downloads-panel tl-timeline-panel" id="tl-panel-education" role="tabpanel" aria-labelledby="tab-tl-education" aria-hidden="true">
-            <p class="tl-edu-lead" data-i18n="tl-edu-lead">Escolas, projetos e aulas em ordem cronológica. Clique no texto de cada etapa para abrir o site ou perfil quando houver link.</p>
+        <div class="downloads-panel tl-timeline-panel" id="tl-panel-education" data-tl-panel="education" role="tabpanel" aria-labelledby="tab-tl-education" aria-hidden="true">
 
             <div class="tl-spine-wrapper tl-spine-wrapper--edu">
 
