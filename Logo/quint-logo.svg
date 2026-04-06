@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 52" fill="none">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#FFC940"/>
+      <stop offset="50%"  stop-color="#E5A000"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+    <filter id="glow" x="-10%" y="-30%" width="120%" height="160%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- Wordmark: QUINT -->
+  <text
+    x="110" y="42"
+    font-family="'Bebas Neue', 'Arial Black', sans-serif"
+    font-size="48"
+    font-weight="400"
+    letter-spacing="8"
+    text-anchor="middle"
+    fill="url(#gold)"
+    filter="url(#glow)"
+  >QUINT</text>
+  <!-- Underline accent -->
+  <rect x="30" y="47" width="160" height="2.5" rx="1.25" fill="url(#gold)" opacity="0.7"/>
+</svg>
