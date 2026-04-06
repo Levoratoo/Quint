@@ -521,7 +521,21 @@ section {
     gap: 2rem;
     overflow: hidden;
     padding: calc(var(--nav-total) + 5rem) calc(var(--page-gutter) + var(--safe-right)) 5rem calc(var(--page-gutter) + var(--safe-left));
-    background: var(--bg);
+    background: var(--bg) url('Fotos hero/8a82b216-ac08-4fce-b980-1fae062bc7b6.png') center right / cover no-repeat;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(8, 6, 6, 0.85) 0%,
+        rgba(8, 6, 6, 0.60) 50%,
+        transparent 100%
+    );
+    z-index: 1;
+    pointer-events: none;
 }
 
 /* Subtle red radial background */
@@ -537,8 +551,8 @@ section {
     width: 520px;
     height: 420px;
     background: radial-gradient(ellipse at center,
-        rgba(255, 26, 26, 0.18) 0%,
-        rgba(180, 10, 10, 0.08) 45%,
+        rgba(255, 179, 0, 0.18) 0%,
+        rgba(184, 134, 11, 0.08) 45%,
         transparent 70%);
     border-radius: 50%;
     pointer-events: none;
@@ -619,8 +633,8 @@ section {
     height: 3px;
     width: 0;
     border-radius: 2px;
-    background: linear-gradient(90deg, #ff1a1a 0%, #ff3b3b 60%, #800000 100%);
-    box-shadow: 0 0 10px rgba(255, 26, 26, 0.6), 0 0 24px rgba(255, 26, 26, 0.35);
+    background: linear-gradient(90deg, #FFB300 0%, #FFC940 60%, #B8860B 100%);
+    box-shadow: 0 0 10px rgba(255, 179, 0, 0.6), 0 0 24px rgba(255, 179, 0, 0.35);
     animation: fireLine 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
 }
 
@@ -636,8 +650,8 @@ section {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(ellipse 70% 60% at 15% 60%, rgba(255, 26, 26, 0.05) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(255, 26, 26, 0.07) 0%, transparent 60%);
+        radial-gradient(ellipse 70% 60% at 15% 60%, rgba(255, 179, 0, 0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(255, 179, 0, 0.05) 0%, transparent 60%);
     pointer-events: none;
     z-index: 0;
 }
@@ -646,7 +660,7 @@ section {
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 580px;
+    max-width: 640px;
     flex-shrink: 0;
     animation: fadeInUp 0.85s ease both;
 }
@@ -656,14 +670,14 @@ section {
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    background: rgba(255, 26, 26, 0.1);
-    border: 1px solid rgba(255, 26, 26, 0.25);
+    background: rgba(255, 179, 0, 0.12);
+    border: 1px solid rgba(255, 179, 0, 0.30);
     border-radius: 999px;
     padding: 0.4rem 1rem;
     font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.08em;
-    color: var(--primary);
+    color: #FFB300;
     text-transform: uppercase;
     margin-bottom: 2rem;
 }
@@ -671,9 +685,9 @@ section {
 .pill-dot {
     width: 7px;
     height: 7px;
-    background: var(--primary);
+    background: #FFB300;
     border-radius: 50%;
-    box-shadow: 0 0 8px var(--primary-glow);
+    box-shadow: 0 0 8px rgba(255, 179, 0, 0.6);
     flex-shrink: 0;
     animation: pulseDot 2s ease-in-out infinite;
 }
@@ -700,10 +714,10 @@ section {
     font-family: var(--font-display);
     font-size: clamp(3rem, 6.5vw, 6rem);
     font-weight: 400;
-    color: var(--primary);
+    color: #FFB300;
     letter-spacing: 0.03em;
     line-height: 0.95;
-    text-shadow: 0 0 30px rgba(255, 26, 26, 0.4);
+    text-shadow: 0 0 30px rgba(255, 179, 0, 0.45);
 }
 
 .hero-desc {

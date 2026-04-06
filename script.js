@@ -1,5 +1,5 @@
 /* ============================================================
-   LEVORATO PRESS KIT — SCRIPT
+   QUINT PRESS KIT — SCRIPT
    Particle system, animations, navbar, counters
    ============================================================ */
 
@@ -684,7 +684,7 @@ const i18n = {
         'ch04-quote'         : 'Pela primeira vez em 15 anos de carreira musical nos palcos, primeiro no pagode e agora na música eletrônica, tô lançando minha marca oficialmente pela primeira vez dentro do Minimal Bass, assumindo o protagonismo da minha própria história.',
         'sobre-tag'          : 'SOBRE',
         'sobre-title'        : 'A força que<br><span class="text-glow">move a pista</span>',
-        'sobre-p1'           : 'Fala galera, beleza?<br><br>Sou o Pedro (Levorato), DJ de Minimal Bass.',
+        'sobre-p1'           : 'Fala galera, beleza?<br><br>Sou o Quint, DJ de Minimal Bass.',
         'sobre-p2'           : 'Minha relação com a música vai muito além da pista. São mais de 15 anos respirando música, não só tocando, mas ensinando, estudando e ajudando outras pessoas a se conectarem com ela. Já atuei como professor, músico e em diferentes projetos, e tudo isso molda diretamente a forma como eu me expresso hoje.',
         'sobre-p3'           : 'Acredito que música é, antes de tudo, sentimento e troca. Por isso, cada vez que eu subo pra tocar, não é só sobre som, é sobre criar uma conexão real com quem tá ali, entender o momento e transformar aquilo em experiência.',
         'sobre-p4'           : 'Minha formação em música pela <strong>Universidade Estadual de Maringá</strong> trouxe uma base forte, mas é na vivência que meu som ganha verdade.',
@@ -724,7 +724,7 @@ const i18n = {
         'footer-sobre'       : 'Sobre',
         'footer-musicas'     : 'Músicas',
         'footer-social-heading': 'Redes Sociais',
-        'footer-copy'        : '© 2026 LEVORATO. Todos os direitos reservados.',
+        'footer-copy'        : '© 2026 QUINT. Todos os direitos reservados.',
         'footer-credit-text' : 'Site desenvolvido por',
     },
     en: {
@@ -821,7 +821,7 @@ const i18n = {
         'ch04-quote'         : 'For the first time in 15 years of musical career on stages — first in pagode and now in electronic music — I\'m officially launching my brand within Minimal Bass, taking ownership of my own story.',
         'sobre-tag'          : 'ABOUT',
         'sobre-title'        : 'The force that<br><span class="text-glow">moves the floor</span>',
-        'sobre-p1'           : 'Hey everyone, how\'s it going?<br><br>I\'m Pedro (Levorato), a Minimal Bass DJ.',
+        'sobre-p1'           : 'Hey everyone, how\'s it going?<br><br>I\'m Quint, a Minimal Bass DJ.',
         'sobre-p2'           : 'My relationship with music goes far beyond the dance floor. It\'s been more than 15 years breathing music — not only playing, but teaching, studying and helping others connect with it. I\'ve worked as a teacher, musician and on different projects, and all of that directly shapes how I express myself today.',
         'sobre-p3'           : 'I believe music is, first and foremost, feeling and exchange. So every time I step up to play, it\'s not just about sound — it\'s about creating a real connection with whoever\'s there, understanding the moment and turning it into an experience.',
         'sobre-p4'           : 'My music training at <strong>Universidade Estadual de Maringá</strong> gave me a strong foundation, but it\'s lived experience that gives my sound its truth.',
@@ -861,7 +861,7 @@ const i18n = {
         'footer-sobre'       : 'About',
         'footer-musicas'     : 'Music',
         'footer-social-heading': 'Social Media',
-        'footer-copy'        : '© 2026 LEVORATO. All rights reserved.',
+        'footer-copy'        : '© 2026 QUINT. All rights reserved.',
         'footer-credit-text' : 'Website developed by',
     },
     es: {
@@ -958,7 +958,7 @@ const i18n = {
         'ch04-quote'         : 'Por primera vez en 15 años de carrera musical en los escenarios — primero en el pagode y ahora en la música electrónica — estoy lanzando oficialmente mi marca dentro del Minimal Bass, asumiendo el protagonismo de mi propia historia.',
         'sobre-tag'          : 'SOBRE',
         'sobre-title'        : 'La fuerza que<br><span class="text-glow">mueve la pista</span>',
-        'sobre-p1'           : '¡Hola a todos! ¿Qué tal?<br><br>Soy Pedro (Levorato), DJ de Minimal Bass.',
+        'sobre-p1'           : '¡Hola a todos! ¿Qué tal?<br><br>Soy Quint, DJ de Minimal Bass.',
         'sobre-p2'           : 'Mi relación con la música va mucho más allá de la pista. Son más de 15 años respirando música: no solo tocando, sino enseñando, estudiando y ayudando a otras personas a conectar con ella. He sido profesor, músico y he estado en distintos proyectos, y todo eso moldea directamente cómo me expreso hoy.',
         'sobre-p3'           : 'Creo que la música es, ante todo, sentimiento e intercambio. Por eso, cada vez que subo a tocar, no se trata solo de sonido: se trata de crear una conexión real con quien está ahí, entender el momento y transformarlo en experiencia.',
         'sobre-p4'           : 'Mi formación en música en la <strong>Universidade Estadual de Maringá</strong> me dio una base sólida, pero es en la vivencia donde mi sonido cobra verdad.',
@@ -998,7 +998,7 @@ const i18n = {
         'footer-sobre'       : 'Sobre',
         'footer-musicas'     : 'Música',
         'footer-social-heading': 'Redes Sociales',
-        'footer-copy'        : '© 2026 LEVORATO. Todos los derechos reservados.',
+        'footer-copy'        : '© 2026 QUINT. Todos los derechos reservados.',
         'footer-credit-text' : 'Sitio desarrollado por',
     },
     zh: {
@@ -1095,7 +1095,7 @@ const i18n = {
         'ch04-quote'         : '在舞台上15年的音乐生涯中——先是pagode，现在是电子音乐——我第一次在Minimal Bass领域正式发布自己的品牌，掌控自己故事的主导权。',
         'sobre-tag'          : '关于',
         'sobre-title'        : '驱动<br><span class="text-glow">舞台的力量</span>',
-        'sobre-p1'           : '大家好！最近怎么样？<br><br>我是Pedro（Levorato），Minimal Bass DJ。',
+        'sobre-p1'           : '大家好！最近怎么样？<br><br>我是Quint，Minimal Bass DJ。',
         'sobre-p2'           : '我与音乐的关系远不止舞池。十五多年来我一直与音乐相伴——不仅是演奏，还有教学、学习，并帮助他人与音乐建立连结。我当过教师、乐手，也参与过不同项目，这些都直接塑造了我今天的表达方式。',
         'sobre-p3'           : '我相信音乐首先是情感与交流。因此每次上台，不只是声音——更是与在场的人建立真实的连结，理解当下，把它变成体验。',
         'sobre-p4'           : '在<strong>马林加州立大学（Universidade Estadual de Maringá）</strong>的音乐学习为我打下了扎实基础，但真正让我的声音有说服力的，是生活里的历练。',
@@ -1135,7 +1135,7 @@ const i18n = {
         'footer-sobre'       : '关于',
         'footer-musicas'     : '音乐',
         'footer-social-heading': '社交媒体',
-        'footer-copy'        : '© 2026 LEVORATO. 保留所有权利。',
+        'footer-copy'        : '© 2026 QUINT. 保留所有权利。',
         'footer-credit-text' : '网站开发者',
     },
     de: {
@@ -1232,7 +1232,7 @@ const i18n = {
         'ch04-quote'         : 'Zum ersten Mal in 15 Jahren musikalischer Karriere auf Bühnen — zuerst im Pagode, jetzt in der elektronischen Musik — bringe ich offiziell meine Marke innerhalb von Minimal Bass heraus und übernehme die Hauptrolle in meiner eigenen Geschichte.',
         'sobre-tag'          : 'ÜBER MICH',
         'sobre-title'        : 'Die Kraft, die<br><span class="text-glow">den Floor bewegt</span>',
-        'sobre-p1'           : 'Hey Leute, alles klar?<br><br>Ich bin Pedro (Levorato), Minimal Bass DJ.',
+        'sobre-p1'           : 'Hey Leute, alles klar?<br><br>Ich bin Quint, Minimal Bass DJ.',
         'sobre-p2'           : 'Meine Beziehung zur Musik geht weit über die Tanzfläche hinaus. Seit über 15 Jahren „atme“ ich Musik — nicht nur beim Spielen, sondern auch beim Unterrichten, Lernen und anderen dabei helfen, sich mit ihr zu verbinden. Ich war Lehrer, Musiker und in verschiedenen Projekten aktiv — all das prägt direkt, wie ich mich heute ausdrücke.',
         'sobre-p3'           : 'Ich glaube, Musik ist vor allem Gefühl und Austausch. Jedes Mal, wenn ich auflege, geht es nicht nur um Sound, sondern um echte Verbindung mit den Leuten dort, den Moment zu verstehen und ihn in ein Erlebnis zu verwandeln.',
         'sobre-p4'           : 'Meine musikalische Ausbildung an der <strong>Universidade Estadual de Maringá</strong> hat mir ein starkes Fundament gegeben — aber in der gelebten Erfahrung gewinnt mein Sound seine Wahrheit.',
@@ -1272,7 +1272,7 @@ const i18n = {
         'footer-sobre'       : 'Über mich',
         'footer-musicas'     : 'Musik',
         'footer-social-heading': 'Social Media',
-        'footer-copy'        : '© 2026 LEVORATO. Alle Rechte vorbehalten.',
+        'footer-copy'        : '© 2026 QUINT. Alle Rechte vorbehalten.',
         'footer-credit-text' : 'Website entwickelt von',
     },
     ja: {
@@ -1369,7 +1369,7 @@ const i18n = {
         'ch04-quote'         : 'ステージでの15年の音楽キャリアの中で — 初めはpagode、今は電子音楽 — Minimal Bassの世界で初めて公式に自分のブランドをローンチし、自分自身のストーリーの主役となる。',
         'sobre-tag'          : 'プロフィール',
         'sobre-title'        : 'フロアを動かす<br><span class="text-glow">力</span>',
-        'sobre-p1'           : 'やあ、元気？<br><br>Pedro（Levorato）、Minimal Bass DJです。',
+        'sobre-p1'           : 'やあ、元気？<br><br>Quint（Minimal Bass DJ）です。',
         'sobre-p2'           : '音楽との関係はダンスフロアだけにとどまりません。15年以上、音楽と共に生きてきました。演奏だけでなく、教え、学び、他の人が音楽とつながる手助けもしてきました。教師や演奏者として、さまざまなプロジェクトに関わってきましたが、それらすべてが、今の自分の表現を形作っています。',
         'sobre-p3'           : '音楽とは何より感情と交換だと信じています。だからプレイするたびに、音だけではなく、そこにいる人との本物のつながりをつくり、その瞬間を理解し、体験に変えることが大切です。',
         'sobre-p4'           : '<strong>Universidade Estadual de Maringá</strong>での音楽教育は強い土台をくれましたが、サウンドに真実を与えるのは日々の経験です。',
@@ -1409,7 +1409,7 @@ const i18n = {
         'footer-sobre'       : 'プロフィール',
         'footer-musicas'     : 'ミュージック',
         'footer-social-heading': 'ソーシャルメディア',
-        'footer-copy'        : '© 2026 LEVORATO. 無断複製禁止。',
+        'footer-copy'        : '© 2026 QUINT. 無断複製禁止。',
         'footer-credit-text' : 'ウェブサイト制作',
     },
 };
@@ -1465,7 +1465,7 @@ function applyLang(lang) {
 
     const langMap = { pt: 'pt-BR', en: 'en', es: 'es', zh: 'zh-CN', de: 'de', ja: 'ja' };
     document.documentElement.lang = langMap[lang] || lang;
-    localStorage.setItem('levorato-lang', lang);
+    localStorage.setItem('quint-lang', lang);
 }
 
 function initI18n() {
@@ -1507,7 +1507,7 @@ function initI18n() {
     });
 
     // Apply saved language
-    const saved = localStorage.getItem('levorato-lang') || 'pt';
+    const saved = localStorage.getItem('quint-lang') || 'pt';
     if (saved !== 'pt') applyLang(saved);
 }
 
