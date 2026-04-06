@@ -1,7 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFC940"/>
+      <stop offset="55%" stop-color="#E5A000"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+  </defs>
   <rect width="32" height="32" rx="6" fill="#050505"/>
-  <rect x="1" y="1" width="30" height="30" rx="5" fill="none" stroke="#ff1a1a" stroke-width="1.2" opacity="0.6"/>
-  <text x="16" y="23" font-family="Arial Black, sans-serif" font-size="20" font-weight="900"
-        fill="#ff1a1a" text-anchor="middle" letter-spacing="1">L</text>
-  <rect x="8" y="25" width="16" height="2" rx="1" fill="#ff1a1a" opacity="0.7"/>
+  <rect x="1" y="1" width="30" height="30" rx="5" fill="none" stroke="url(#g)" stroke-width="1.2" opacity="0.85"/>
+  <text x="16" y="23" font-family="Arial Black, sans-serif" font-size="19" font-weight="900"
+        fill="url(#g)" text-anchor="middle" letter-spacing="0">Q</text>
+  <rect x="8" y="25" width="16" height="2" rx="1" fill="#E5A000" opacity="0.85"/>
 </svg>
