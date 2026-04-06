@@ -687,22 +687,27 @@ section {
 .hero-logo-wrap {
     position: relative;
     display: block;
-    overflow: hidden;
+    overflow: visible;
     line-height: 0.95;
     margin-bottom: 0.05em;
 }
 
 .hero-logo-glow {
     position: absolute;
-    inset: -20px -30px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 180%;
+    height: 250%;
     background: radial-gradient(ellipse at center,
-        rgba(255, 179, 0, 0.22) 0%,
-        rgba(255, 179, 0, 0.06) 50%,
-        transparent 75%);
+        rgba(255, 179, 0, 0.28) 0%,
+        rgba(255, 179, 0, 0.08) 45%,
+        transparent 70%);
     border-radius: 50%;
     pointer-events: none;
     animation: blobPulse 3.5s ease-in-out infinite;
     display: block;
+    z-index: 0;
 }
 
 .hero-logo-img {
