@@ -683,20 +683,20 @@ section {
     animation: fadeInUp 0.85s ease both;
 }
 
-/* ---- Hero Logo ---- */
+/* ---- Hero Logo (substitui o texto QUINT) ---- */
 .hero-logo-wrap {
     position: relative;
     display: inline-flex;
     align-items: center;
-    margin-bottom: 1.6rem;
-    animation: fadeInUp 0.7s ease 0.15s both;
+    line-height: 0.95;
+    overflow: hidden;
 }
 
 .hero-logo-glow {
     position: absolute;
-    inset: -12px -20px;
+    inset: -20px -30px;
     background: radial-gradient(ellipse at center,
-        rgba(255, 179, 0, 0.22) 0%,
+        rgba(255, 179, 0, 0.20) 0%,
         rgba(255, 179, 0, 0.06) 50%,
         transparent 75%);
     border-radius: 50%;
@@ -706,14 +706,17 @@ section {
 
 .hero-logo-img {
     position: relative;
-    height: clamp(48px, 7vw, 80px);
+    height: clamp(80px, 14vw, 160px);
     width: auto;
     display: block;
-    filter: drop-shadow(0 0 16px rgba(255, 179, 0, 0.35));
+    filter:
+        brightness(1.05)
+        drop-shadow(0 0 20px rgba(255, 255, 255, 0.25))
+        drop-shadow(0 0 40px rgba(255, 179, 0, 0.15));
     z-index: 1;
 }
 
-/* Shimmer sweep over the logo — on wrapper (img doesn't support ::after) */
+/* Shimmer sweep — no wrapper (img não suporta ::after) */
 .hero-logo-wrap::after {
     content: '';
     position: absolute;
@@ -724,10 +727,10 @@ section {
     background: linear-gradient(
         105deg,
         transparent 30%,
-        rgba(255, 230, 130, 0.38) 50%,
+        rgba(255, 255, 255, 0.18) 50%,
         transparent 70%
     );
-    animation: heroShimmer 5s ease-in-out 1s infinite;
+    animation: heroShimmer 6s ease-in-out 0.5s infinite;
     pointer-events: none;
     z-index: 2;
 }
