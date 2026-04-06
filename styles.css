@@ -683,6 +683,55 @@ section {
     animation: fadeInUp 0.85s ease both;
 }
 
+/* ---- Hero Logo ---- */
+.hero-logo-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 1.6rem;
+    animation: fadeInUp 0.7s ease 0.15s both;
+}
+
+.hero-logo-glow {
+    position: absolute;
+    inset: -12px -20px;
+    background: radial-gradient(ellipse at center,
+        rgba(255, 179, 0, 0.22) 0%,
+        rgba(255, 179, 0, 0.06) 50%,
+        transparent 75%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: blobPulse 3.5s ease-in-out infinite;
+}
+
+.hero-logo-img {
+    position: relative;
+    height: clamp(48px, 7vw, 80px);
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 0 16px rgba(255, 179, 0, 0.35));
+    z-index: 1;
+}
+
+/* Shimmer sweep over the logo — on wrapper (img doesn't support ::after) */
+.hero-logo-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        105deg,
+        transparent 30%,
+        rgba(255, 230, 130, 0.38) 50%,
+        transparent 70%
+    );
+    animation: heroShimmer 5s ease-in-out 1s infinite;
+    pointer-events: none;
+    z-index: 2;
+}
+
 /* Pill tag — like the references */
 .hero-pill {
     display: inline-flex;
