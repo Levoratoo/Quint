@@ -430,7 +430,6 @@ section {
     display: flex;
     align-items: center;
     gap: 0.2rem;
-    margin-left: auto;
 }
 
 .nav-link {
