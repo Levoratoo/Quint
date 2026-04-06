@@ -1963,6 +1963,12 @@ section {
 .sc-grid--2 { grid-template-columns: repeat(2, 1fr); }
 .sc-grid--1 { grid-template-columns: 1fr; }
 
+/* Painel Spotify: embed do artista em largura confortável */
+.spotify-artist-grid {
+    width: 100%;
+    max-width: 660px;
+}
+
 .sc-card {
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(255,255,255,0.07);
