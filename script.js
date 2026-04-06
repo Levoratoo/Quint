@@ -32,7 +32,7 @@ class Particle {
         this.vx    = (Math.random() - 0.5) * 0.22;
         this.vy    = (Math.random() - 0.5) * 0.22;
         this.alpha = Math.random() * 0.4 + 0.06;
-        this.isRed = Math.random() > 0.7;
+        this.isGold = Math.random() > 0.7;
     }
 
     update() {
@@ -48,8 +48,8 @@ class Particle {
     draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = this.isRed
-            ? `rgba(255, 26, 26, ${this.alpha})`
+        ctx.fillStyle = this.isGold
+            ? `rgba(255, 179, 0, ${this.alpha})`
             : `rgba(200, 200, 200, ${this.alpha * 0.35})`;
         ctx.fill();
     }
@@ -227,7 +227,7 @@ document.querySelectorAll('.number-value[data-target]').forEach(el => {
 });
 
 // ============================================================
-// CURSOR GLOW (subtle red spotlight, desktop only)
+// CURSOR GLOW (subtle amber spotlight, desktop only)
 // ============================================================
 
 if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
@@ -235,7 +235,7 @@ if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
         const glow = document.createElement('div');
         glow.style.cssText = `
             position:fixed;width:300px;height:300px;border-radius:50%;
-            background:radial-gradient(circle,rgba(255,26,26,0.04) 0%,transparent 70%);
+            background:radial-gradient(circle,rgba(255,179,0,0.04) 0%,transparent 70%);
             pointer-events:none;z-index:0;transform:translate(-50%,-50%);
             transition:opacity 0.4s ease;opacity:0;
         `;
@@ -490,7 +490,7 @@ function initHeroParticles() {
     // Fewer particles on mobile/low-end
     const isMobile = window.innerWidth < 768;
     const COUNT    = isMobile ? 40 : 70;
-    const COLORS   = ['#ff1a1a', '#ff3b3b', '#cc0000', '#ff5555', '#800000'];
+    const COLORS   = ['#E5A000', '#FFB300', '#FFC940', '#B8860B', '#8B6914'];
     const frag     = document.createDocumentFragment();
 
     for (let i = 0; i < COUNT; i++) {
