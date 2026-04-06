@@ -717,24 +717,7 @@ section {
     z-index: 1;
 }
 
-/* Shimmer sweep */
-.hero-logo-wrap::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(
-        105deg,
-        transparent 30%,
-        rgba(255, 255, 255, 0.20) 50%,
-        transparent 70%
-    );
-    animation: heroShimmer 6s ease-in-out 0.5s infinite;
-    pointer-events: none;
-    z-index: 2;
-}
+/* Sem shimmer retangular — o glow em drop-shadow já dá o efeito */
 
 /* Pill tag — like the references */
 .hero-pill {
