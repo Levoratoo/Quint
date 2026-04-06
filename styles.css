@@ -2616,6 +2616,11 @@ section {
     .hv-badge-bottom { left: -4%; bottom: 8%; }
 }
 
+/* Em mobile o círculo some — o tiger já é o fundo */
+@media (max-width: 768px) {
+    .hero-visual { display: none; }
+}
+
 @media (max-width: 768px) {
     /* Nav mobile */
     .nav-toggle { display: flex; }
