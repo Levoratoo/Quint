@@ -1964,7 +1964,8 @@ section {
 .sc-grid--1 { grid-template-columns: 1fr; }
 
 /* Painel Spotify: embed do artista em largura confortável */
-.spotify-artist-grid {
+.spotify-artist-grid,
+.youtube-embed-grid {
     width: 100%;
     max-width: 660px;
 }

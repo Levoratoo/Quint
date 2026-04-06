@@ -1004,22 +1004,45 @@
                 <p class="section-desc" data-i18n="music-desc">Explore os sets e lançamentos nas plataformas</p>
             </div>
 
-            <!-- ---- Tab bar ---- -->
+            <!-- ---- Tab bar: Spotify (principal) · SoundCloud · YouTube ---- -->
             <div class="stream-tabs reveal-up">
-                <button class="stream-tab active" data-tab="soundcloud">
-                    <i class="fab fa-soundcloud"></i>
-                    <span>Sets</span>
-                    <span class="tab-count">2</span>
-                </button>
-                <button class="stream-tab" data-tab="spotify">
+                <button class="stream-tab active" data-tab="spotify">
                     <i class="fab fa-spotify"></i>
                     <span data-i18n="tab-autorais">Autorais</span>
                     <span class="tab-count">1</span>
                 </button>
+                <button class="stream-tab" data-tab="soundcloud">
+                    <i class="fab fa-soundcloud"></i>
+                    <span data-i18n="tab-sets">Sets</span>
+                    <span class="tab-count">2</span>
+                </button>
+                <button class="stream-tab" data-tab="youtube">
+                    <i class="fab fa-youtube"></i>
+                    <span data-i18n="tab-youtube">Vídeo</span>
+                    <span class="tab-count">1</span>
+                </button>
             </div>
 
-            <!-- ---- SoundCloud panel — Sets ---- -->
-            <div class="stream-panel active" id="panel-soundcloud">
+            <!-- ---- 1ª aba: Autorais — Spotify (perfil Quint BR) ---- -->
+            <div class="stream-panel active" id="panel-spotify">
+                <div class="sc-grid sc-grid--1 spotify-artist-grid">
+                    <div class="sc-card sc-card--tall">
+                        <div class="sc-card-label">Quint (BR) <span>Spotify · discografia</span></div>
+                        <iframe
+                            src="https://open.spotify.com/embed/artist/2lIIFipc7zOqFnIHRgSSmj?utm_source=generator&amp;theme=0"
+                            width="100%" height="380" frameborder="0" loading="lazy"
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            title="Quint (BR) no Spotify">
+                        </iframe>
+                    </div>
+                </div>
+                <a href="https://open.spotify.com/intl-pt/artist/2lIIFipc7zOqFnIHRgSSmj" class="stream-cta stream-cta--spotify" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-spotify"></i> <span data-i18n="spotify-cta">Ver discografia completa no Spotify</span>
+                </a>
+            </div>
+
+            <!-- ---- 2ª aba: SoundCloud — Sets ---- -->
+            <div class="stream-panel" id="panel-soundcloud">
                 <div class="sc-grid">
                     <div class="sc-card">
                         <div class="sc-card-label">SET @CIRCUITO2026 <span>Quint</span></div>
@@ -1039,21 +1062,22 @@
                 </a>
             </div>
 
-            <!-- ---- Autorais — Spotify (perfil completo Quint BR) ---- -->
-            <div class="stream-panel" id="panel-spotify">
-                <div class="sc-grid sc-grid--1 spotify-artist-grid">
-                    <div class="sc-card sc-card--tall">
-                        <div class="sc-card-label">Quint (BR) <span>Spotify · discografia</span></div>
+            <!-- ---- 3ª aba: YouTube ---- -->
+            <div class="stream-panel" id="panel-youtube">
+                <div class="sc-grid sc-grid--1 youtube-embed-grid">
+                    <div class="sc-card sc-card--video">
+                        <div class="sc-card-label">Quint <span data-i18n="youtube-card-label">YouTube</span></div>
                         <iframe
-                            src="https://open.spotify.com/embed/artist/2lIIFipc7zOqFnIHRgSSmj?utm_source=generator&amp;theme=0"
-                            width="100%" height="380" frameborder="0" loading="lazy"
-                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                            title="Quint (BR) no Spotify">
+                            src="https://www.youtube.com/embed/7hY5EodX5Ec"
+                            width="100%" height="420" frameborder="0" loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            title="Quint (BR) no YouTube">
                         </iframe>
                     </div>
                 </div>
-                <a href="https://open.spotify.com/intl-pt/artist/2lIIFipc7zOqFnIHRgSSmj" class="stream-cta stream-cta--spotify" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-spotify"></i> <span data-i18n="spotify-cta">Ver discografia completa no Spotify</span>
+                <a href="https://www.youtube.com/watch?v=7hY5EodX5Ec" class="stream-cta stream-cta--youtube" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-youtube"></i> <span data-i18n="youtube-cta">Ver no YouTube</span>
                 </a>
             </div>
 
@@ -1066,6 +1090,9 @@
                     </a>
                     <a href="https://soundcloud.com/quintbr" class="platform-link" target="_blank" rel="noopener noreferrer">
                         <i class="fab fa-soundcloud"></i> SoundCloud
+                    </a>
+                    <a href="https://www.youtube.com/watch?v=7hY5EodX5Ec" class="platform-link" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-youtube"></i> YouTube
                     </a>
                 </div>
             </div>
@@ -1161,6 +1188,9 @@
                         </a>
                         <a href="https://open.spotify.com/intl-pt/artist/2lIIFipc7zOqFnIHRgSSmj" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
                             <i class="fab fa-spotify"></i>
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=7hY5EodX5Ec" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
                         </a>
                     </div>
                 </div>
