@@ -707,7 +707,7 @@ section {
 
 .hero-logo-img {
     position: relative;
-    height: clamp(90px, 15vw, 180px);
+    height: clamp(140px, 22vw, 280px);
     width: auto;
     display: block;
     filter:
