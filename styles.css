@@ -94,19 +94,6 @@ ul {
 }
 
 /* -------------------------------------------------------
-   Particle Canvas
-------------------------------------------------------- */
-#particle-canvas {
-    position: fixed;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    pointer-events: none;
-    opacity: 0.5;
-}
-
-/* -------------------------------------------------------
    Layout
 ------------------------------------------------------- */
 .container {
@@ -511,132 +498,15 @@ section {
     content: '';
     position: absolute;
     inset: 0;
+    /* Leve vinheta à esquerda para legibilidade — sem blur */
     background: linear-gradient(
         90deg,
-        rgba(6, 4, 14, 0.90) 0%,
-        rgba(6, 4, 14, 0.65) 50%,
-        rgba(6, 4, 14, 0.40) 100%
+        rgba(6, 4, 14, 0.75) 0%,
+        rgba(6, 4, 14, 0.35) 45%,
+        transparent 85%
     );
     z-index: 1;
     pointer-events: none;
-}
-
-/* Subtle amber radial background */
-/* -------------------------------------------------------
-   HERO — 4 EFEITOS VISUAIS
-------------------------------------------------------- */
-
-/* 1. Glow blob pulsante */
-.hero-glow-blob {
-    position: absolute;
-    top: -40px;
-    left: -60px;
-    width: 520px;
-    height: 420px;
-    background: radial-gradient(ellipse at center,
-        rgba(139, 63, 208, 0.18) 0%,
-        rgba(92, 29, 158, 0.08) 45%,
-        transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-    animation: blobPulse 4s ease-in-out infinite;
-    will-change: transform, opacity;
-}
-
-@keyframes blobPulse {
-    0%, 100% { transform: scale(1);    opacity: 0.7; }
-    50%       { transform: scale(1.15); opacity: 1;   }
-}
-
-/* 2. Partículas flutuantes */
-.hero-particles {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-    overflow: hidden;
-}
-
-.hp {
-    position: absolute;
-    border-radius: 50%;
-    will-change: transform, opacity;
-    animation: hpFloat ease-in-out infinite;
-}
-
-@keyframes hpFloat {
-    0%   { transform: translateY(0)   scale(1);    opacity: var(--hp-op); }
-    50%  { transform: translateY(var(--hp-rise)) scale(1.3); opacity: 1; }
-    100% { transform: translateY(0)   scale(1);    opacity: var(--hp-op); }
-}
-
-/* 3. Shimmer em "LEVORATO" */
-.hero-shimmer {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-}
-
-.hero-shimmer::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 60%;
-    height: 100%;
-    background: linear-gradient(
-        105deg,
-        transparent 30%,
-        rgba(255, 255, 255, 0.22) 50%,
-        transparent 70%
-    );
-    animation: heroShimmer 6s ease-in-out infinite;
-    pointer-events: none;
-}
-
-@keyframes heroShimmer {
-    0%   { left: -100%; opacity: 0; }
-    10%  { opacity: 1; }
-    40%  { left: 130%;  opacity: 0; }
-    100% { left: 130%;  opacity: 0; }
-}
-
-/* 4. Underline de fogo em "MINIMAL BASS." */
-.hero-fire-line {
-    position: relative;
-    display: inline-block;
-}
-
-.hero-fire-line::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    height: 3px;
-    width: 0;
-    border-radius: 2px;
-    background: linear-gradient(90deg, #9B50E8 0%, #B06EFF 60%, #5C1D9E 100%);
-    box-shadow: 0 0 10px rgba(139, 63, 208, 0.6), 0 0 24px rgba(139, 63, 208, 0.35);
-    animation: fireLine 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
-}
-
-@keyframes fireLine {
-    from { width: 0;    opacity: 0.6; }
-    to   { width: 100%; opacity: 1;   }
-}
-
-/* -------------------------------------------------------
-   (original) HERO BG GLOW
-------------------------------------------------------- */
-.hero-bg-glow {
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(ellipse 70% 60% at 15% 60%, rgba(139, 63, 208, 0.04) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(139, 63, 208, 0.05) 0%, transparent 60%);
-    pointer-events: none;
-    z-index: 0;
 }
 
 /* ============ LEFT CONTENT ============ */
@@ -654,40 +524,18 @@ section {
     display: block;
     overflow: visible;
     line-height: 0.95;
-    margin-bottom: 0.05em;
-}
-
-.hero-logo-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 180%;
-    height: 250%;
-    background: radial-gradient(ellipse at center,
-        rgba(139, 63, 208, 0.28) 0%,
-        rgba(139, 63, 208, 0.08) 45%,
-        transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    animation: blobPulse 3.5s ease-in-out infinite;
-    display: block;
-    z-index: 0;
+    margin-bottom: 0;
 }
 
 .hero-logo-img {
     position: relative;
-    height: clamp(140px, 22vw, 280px);
+    height: clamp(160px, 26vw, 340px);
     width: auto;
+    max-width: min(92vw, 520px);
     display: block;
-    filter:
-        brightness(1.1)
-        drop-shadow(0 0 24px rgba(255, 255, 255, 0.28))
-        drop-shadow(0 2px 40px rgba(139, 63, 208, 0.18));
+    filter: brightness(1.02);
     z-index: 1;
 }
-
-/* Sem shimmer retangular — o glow em drop-shadow já dá o efeito */
 
 /* Pill tag — like the references */
 .hero-pill {
@@ -721,8 +569,9 @@ section {
     display: flex;
     flex-direction: column;
     line-height: 1;
-    margin-bottom: 1.8rem;
-    gap: 0.1em;
+    margin-bottom: 2rem;
+    gap: 0;
+    align-items: flex-start;
 }
 
 .title-line-white {
@@ -3670,10 +3519,10 @@ a.tl-edu-text-wrap:focus-visible {
     }
     .hero::before {
         background: linear-gradient(
-            160deg,
-            rgba(8, 6, 6, 0.88) 0%,
-            rgba(8, 6, 6, 0.72) 55%,
-            rgba(8, 6, 6, 0.45) 100%
+            165deg,
+            rgba(6, 4, 14, 0.82) 0%,
+            rgba(6, 4, 14, 0.45) 50%,
+            transparent 88%
         );
     }
 
@@ -3717,7 +3566,7 @@ a.tl-edu-text-wrap:focus-visible {
         padding-bottom: 3rem;
     }
     .hero-logo-img {
-        height: clamp(100px, 30vw, 150px);
+        height: clamp(120px, 34vw, 200px);
     }
     .hero-pill {
         font-size: 0.62rem;
@@ -3771,7 +3620,7 @@ a.tl-edu-text-wrap:focus-visible {
 
 /* ---- Telas muito pequenas (≤380px) ---- */
 @media (max-width: 380px) {
-    .hero-logo-img { height: clamp(88px, 28vw, 120px); }
+    .hero-logo-img { height: clamp(100px, 32vw, 160px); }
     .hero-pill { font-size: 0.56rem; letter-spacing: 0.06em; }
     .stream-tab span { display: none; }   /* só ícone nas abas */
     .stream-tab { padding: 0.45rem 1rem; }

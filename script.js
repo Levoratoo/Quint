@@ -10,12 +10,13 @@
 // ============================================================
 
 const canvas = document.getElementById('particle-canvas');
-const ctx    = canvas.getContext('2d');
+const ctx    = canvas ? canvas.getContext('2d') : null;
 let particles = [];
 let rafId;
 let canvasVisible = true;
 
 function resizeCanvas() {
+    if (!canvas) return;
     canvas.width  = window.innerWidth;
     canvas.height = window.innerHeight;
 }
@@ -56,6 +57,7 @@ class Particle {
 }
 
 function buildParticles() {
+    if (!canvas || !ctx) return;
     particles = [];
     // Cap at 60 — enough for effect, light on GPU
     const count = Math.min(60, Math.floor((canvas.width * canvas.height) / 22000));
@@ -65,6 +67,7 @@ function buildParticles() {
 }
 
 function tickParticles() {
+    if (!canvas || !ctx) return;
     if (!canvasVisible) {
         rafId = requestAnimationFrame(tickParticles);
         return;
@@ -266,7 +269,7 @@ window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
         resizeCanvas();
-        buildParticles();
+        if (canvas && ctx) buildParticles();
     }, 250);
 }, { passive: true });
 
@@ -477,41 +480,6 @@ function initTensionEntry() {
     }, { threshold: 0.35 });
 
     tensionObs.observe(tension);
-}
-
-// ============================================================
-// HERO — CSS PARTICLES (generated at runtime, reduced count)
-// ============================================================
-
-function initHeroParticles() {
-    const container = document.getElementById('hero-particles');
-    if (!container) return;
-
-    // Fewer particles on mobile/low-end
-    const isMobile = window.innerWidth < 768;
-    const COUNT    = isMobile ? 40 : 70;
-    const COLORS   = ['#8B3FD0', '#9B50E8', '#B06EFF', '#5C1D9E', '#7B2FBE'];
-    const frag     = document.createDocumentFragment();
-
-    for (let i = 0; i < COUNT; i++) {
-        const el    = document.createElement('span');
-        const size  = (Math.random() * 7 + 2).toFixed(1);
-        const top   = (Math.random() * 100).toFixed(1);
-        const left  = (Math.random() * 100).toFixed(1);
-        const dur   = (Math.random() * 3.5 + 2.5).toFixed(2);
-        const delay = (Math.random() * 5).toFixed(2);
-        const op    = (Math.random() * 0.5 + 0.2).toFixed(2);
-        const rise  = `-${(Math.random() * 30 + 10).toFixed(0)}px`;
-        const color = COLORS[Math.floor(Math.random() * COLORS.length)];
-        // Only add glow to larger particles to save GPU
-        const glow  = size > 6 ? `0 0 ${Math.round(size * 1.3)}px ${color}88` : 'none';
-
-        el.className = 'hp';
-        el.style.cssText = `width:${size}px;height:${size}px;top:${top}%;left:${left}%;background:${color};box-shadow:${glow};animation-duration:${dur}s;animation-delay:-${delay}s;--hp-op:${op};--hp-rise:${rise};`;
-        frag.appendChild(el);
-    }
-
-    container.appendChild(frag);
 }
 
 // ============================================================
@@ -1541,8 +1509,10 @@ function initI18n() {
 
 function init() {
     resizeCanvas();
-    buildParticles();
-    tickParticles();
+    if (canvas && ctx) {
+        buildParticles();
+        tickParticles();
+    }
     onScroll();
     initDjGallery();
     initTimelineMobileCarousels();
@@ -1550,7 +1520,6 @@ function init() {
     initSpineLine();
     initTimelineReveal();
     initTensionEntry();
-    initHeroParticles();
     initStreamTabs();
     initDownloadsTabs();
     initTimelineStoryTabs();
