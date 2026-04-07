@@ -962,13 +962,35 @@ section {
     top: 0; left: 50%; transform: translateX(-50%);
     width: 160px; height: 2px;
     background: linear-gradient(90deg, transparent, var(--primary), transparent);
-    box-shadow: 0 0 20px rgba(255,179,0,0.5);
+    box-shadow: 0 0 20px rgba(139, 63, 208, 0.35);
 }
 
 .downloads-cta {
     display: flex;
     justify-content: center;
     margin: 1.2rem 0 3rem;
+}
+
+.downloads-cta--zip-parts {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.downloads-zip-note {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    max-width: 28rem;
+    text-align: center;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.downloads-zip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    justify-content: center;
 }
 
 .downloads-tabs {
