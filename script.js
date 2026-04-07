@@ -522,6 +522,33 @@ function initDownloadsTabs() {
     });
 }
 
+/** Um clique inicia os 3 .zip (GitHub limita 100 MB por arquivo — o pacote total fica em 3 partes). */
+const PRESS_ZIP_PARTS = [
+    { href: 'downloads/quint-fotos-imprensa-parte1.zip', filename: 'quint-fotos-imprensa-parte1.zip' },
+    { href: 'downloads/quint-fotos-imprensa-parte2.zip', filename: 'quint-fotos-imprensa-parte2.zip' },
+    { href: 'downloads/quint-fotos-imprensa-parte3.zip', filename: 'quint-fotos-imprensa-parte3.zip' },
+];
+
+function initPressZipBundle() {
+    const btn = document.getElementById('downloads-zip-all');
+    if (!btn) return;
+
+    btn.addEventListener('click', () => {
+        const delayMs = 500;
+        PRESS_ZIP_PARTS.forEach((part, i) => {
+            setTimeout(() => {
+                const a = document.createElement('a');
+                a.href = part.href;
+                a.setAttribute('download', part.filename);
+                a.rel = 'noopener';
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+            }, i * delayMs);
+        });
+    });
+}
+
 function initTimelineStoryTabs() {
     const root = document.getElementById('timeline-story-tabs');
     if (!root) return;
@@ -663,10 +690,8 @@ const i18n = {
         'dl-title'           : 'Fotos em <span class="text-glow">alta qualidade</span>',
         'dl-desc'            : 'Baixe individualmente ou o pacote completo sem perda de qualidade.',
         'dl-cta'             : 'Baixar todas as fotos (.zip)',
-        'dl-zip-note'        : 'O pacote completo está em 3 arquivos .zip (tamanho total ~194 MB).',
-        'dl-cta-zip1'        : 'ZIP — parte 1',
-        'dl-cta-zip2'        : 'ZIP — parte 2',
-        'dl-cta-zip3'        : 'ZIP — parte 3',
+        'dl-zip-note'        : 'O pacote são 3 arquivos .zip (~194 MB no total). Um clique inicia os três downloads — o navegador pode pedir permissão para vários arquivos.',
+        'dl-cta-zip-all'     : 'Baixar pacote completo (3 .zip)',
         'dl-btn'             : 'Baixar',
         'dl-tab-photos'      : 'Minhas fotos',
         'dl-tab-logo'        : 'Logo',
@@ -808,10 +833,8 @@ const i18n = {
         'dl-title'           : 'Photos in <span class="text-glow">high quality</span>',
         'dl-desc'            : 'Download individually or the full package without quality loss.',
         'dl-cta'             : 'Download all photos (.zip)',
-        'dl-zip-note'        : 'The full package is split into 3 .zip files (~194 MB total).',
-        'dl-cta-zip1'        : 'ZIP — part 1',
-        'dl-cta-zip2'        : 'ZIP — part 2',
-        'dl-cta-zip3'        : 'ZIP — part 3',
+        'dl-zip-note'        : 'The package is 3 .zip files (~194 MB total). One click starts all three — your browser may ask to allow multiple downloads.',
+        'dl-cta-zip-all'     : 'Download full package (3 .zip)',
         'dl-btn'             : 'Download',
         'dl-tab-photos'      : 'My photos',
         'dl-tab-logo'        : 'Logo',
@@ -953,10 +976,8 @@ const i18n = {
         'dl-title'           : 'Fotos en <span class="text-glow">alta calidad</span>',
         'dl-desc'            : 'Descarga individualmente o el paquete completo sin pérdida de calidad.',
         'dl-cta'             : 'Descargar todas las fotos (.zip)',
-        'dl-zip-note'        : 'El paquete completo está en 3 archivos .zip (~194 MB en total).',
-        'dl-cta-zip1'        : 'ZIP — parte 1',
-        'dl-cta-zip2'        : 'ZIP — parte 2',
-        'dl-cta-zip3'        : 'ZIP — parte 3',
+        'dl-zip-note'        : 'El paquete son 3 archivos .zip (~194 MB en total). Un clic inicia las tres descargas — el navegador puede pedir permiso.',
+        'dl-cta-zip-all'     : 'Descargar paquete completo (3 .zip)',
         'dl-btn'             : 'Descargar',
         'dl-tab-photos'      : 'Mis fotos',
         'dl-tab-logo'        : 'Logo',
@@ -1098,10 +1119,8 @@ const i18n = {
         'dl-title'           : '高清<span class="text-glow">照片素材</span>',
         'dl-desc'            : '单独下载或下载完整套装，无损画质。',
         'dl-cta'             : '下载所有照片（.zip）',
-        'dl-zip-note'        : '完整套装分为 3 个 .zip 文件（合计约 194 MB）。',
-        'dl-cta-zip1'        : 'ZIP — 第 1 部分',
-        'dl-cta-zip2'        : 'ZIP — 第 2 部分',
-        'dl-cta-zip3'        : 'ZIP — 第 3 部分',
+        'dl-zip-note'        : '完整套装为 3 个 .zip（合计约 194 MB）。一次点击会依次开始下载 — 浏览器可能询问是否允许多文件下载。',
+        'dl-cta-zip-all'     : '下载完整套装（3 个 .zip）',
         'dl-btn'             : '下载',
         'dl-tab-photos'      : '我的照片',
         'dl-tab-logo'        : 'Logo',
@@ -1243,10 +1262,8 @@ const i18n = {
         'dl-title'           : 'Fotos in <span class="text-glow">hoher Qualität</span>',
         'dl-desc'            : 'Einzeln oder als komplettes Paket ohne Qualitätsverlust herunterladen.',
         'dl-cta'             : 'Alle Fotos herunterladen (.zip)',
-        'dl-zip-note'        : 'Das komplette Paket ist in 3 .zip-Dateien aufgeteilt (insgesamt ~194 MB).',
-        'dl-cta-zip1'        : 'ZIP — Teil 1',
-        'dl-cta-zip2'        : 'ZIP — Teil 2',
-        'dl-cta-zip3'        : 'ZIP — Teil 3',
+        'dl-zip-note'        : 'Das Paket besteht aus 3 .zip-Dateien (insgesamt ~194 MB). Ein Klick startet alle drei Downloads — der Browser kann nachfragen.',
+        'dl-cta-zip-all'     : 'Komplettpaket herunterladen (3 .zip)',
         'dl-btn'             : 'Herunterladen',
         'dl-tab-photos'      : 'Meine Fotos',
         'dl-tab-logo'        : 'Logo',
@@ -1388,10 +1405,8 @@ const i18n = {
         'dl-title'           : '高画質<span class="text-glow">フォト素材</span>',
         'dl-desc'            : '個別またはフルパッケージを画質を損なわずにダウンロード。',
         'dl-cta'             : 'すべての写真をダウンロード（.zip）',
-        'dl-zip-note'        : 'フルパッケージは3つの.zipに分割されています（合計約194MB）。',
-        'dl-cta-zip1'        : 'ZIP — 第1部',
-        'dl-cta-zip2'        : 'ZIP — 第2部',
-        'dl-cta-zip3'        : 'ZIP — 第3部',
+        'dl-zip-note'        : 'フルパッケージは3つの.zip（合計約194MB）です。1クリックで順にダウンロードが始まります。ブラウザが複数ファイルの許可を求めることがあります。',
+        'dl-cta-zip-all'     : 'フルパッケージをダウンロード（3つの.zip）',
         'dl-btn'             : 'ダウンロード',
         'dl-tab-photos'      : '写真',
         'dl-tab-logo'        : 'ロゴ',
@@ -1546,6 +1561,7 @@ function init() {
     initTensionEntry();
     initStreamTabs();
     initDownloadsTabs();
+    initPressZipBundle();
     initTimelineStoryTabs();
     initI18n();
 }

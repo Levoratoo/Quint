@@ -852,21 +852,11 @@
 
             <div class="downloads-panel active" id="dl-panel-photos">
                 <div class="downloads-cta downloads-cta--zip-parts reveal-up">
-                    <p class="downloads-zip-note" data-i18n="dl-zip-note">O pacote completo está em 3 arquivos .zip (tamanho total ~194&nbsp;MB).</p>
-                    <div class="downloads-zip-row">
-                        <a href="downloads/quint-fotos-imprensa-parte1.zip" class="btn btn-primary" download="quint-fotos-imprensa-parte1.zip">
-                            <i class="fas fa-download"></i>
-                            <span data-i18n="dl-cta-zip1">ZIP — parte 1</span>
-                        </a>
-                        <a href="downloads/quint-fotos-imprensa-parte2.zip" class="btn btn-primary" download="quint-fotos-imprensa-parte2.zip">
-                            <i class="fas fa-download"></i>
-                            <span data-i18n="dl-cta-zip2">ZIP — parte 2</span>
-                        </a>
-                        <a href="downloads/quint-fotos-imprensa-parte3.zip" class="btn btn-primary" download="quint-fotos-imprensa-parte3.zip">
-                            <i class="fas fa-download"></i>
-                            <span data-i18n="dl-cta-zip3">ZIP — parte 3</span>
-                        </a>
-                    </div>
+                    <p class="downloads-zip-note" data-i18n="dl-zip-note">O pacote são 3 arquivos .zip (~194&nbsp;MB no total). Um clique inicia os três downloads — o navegador pode pedir permissão para vários arquivos.</p>
+                    <button type="button" class="btn btn-primary downloads-zip-all" id="downloads-zip-all">
+                        <i class="fas fa-download" aria-hidden="true"></i>
+                        <span data-i18n="dl-cta-zip-all">Baixar pacote completo (3&nbsp;.zip)</span>
+                    </button>
                 </div>
 
                 <div class="downloads-grid">
