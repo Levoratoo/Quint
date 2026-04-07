@@ -32,7 +32,7 @@ class Particle {
         this.vx    = (Math.random() - 0.5) * 0.22;
         this.vy    = (Math.random() - 0.5) * 0.22;
         this.alpha = Math.random() * 0.4 + 0.06;
-        this.isGold = Math.random() > 0.7;
+        this.isPurple = Math.random() > 0.7;
     }
 
     update() {
@@ -48,9 +48,9 @@ class Particle {
     draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = this.isGold
-            ? `rgba(255, 179, 0, ${this.alpha})`
-            : `rgba(200, 200, 200, ${this.alpha * 0.35})`;
+        ctx.fillStyle = this.isPurple
+            ? `rgba(139, 63, 208, ${this.alpha})`
+            : `rgba(200, 190, 255, ${this.alpha * 0.35})`;
         ctx.fill();
     }
 }
@@ -490,7 +490,7 @@ function initHeroParticles() {
     // Fewer particles on mobile/low-end
     const isMobile = window.innerWidth < 768;
     const COUNT    = isMobile ? 40 : 70;
-    const COLORS   = ['#E5A000', '#FFB300', '#FFC940', '#B8860B', '#8B6914'];
+    const COLORS   = ['#8B3FD0', '#9B50E8', '#B06EFF', '#5C1D9E', '#7B2FBE'];
     const frag     = document.createDocumentFragment();
 
     for (let i = 0; i < COUNT; i++) {
