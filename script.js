@@ -1,97 +1,9 @@
 ﻿/* ============================================================
    QUINT PRESS KIT — SCRIPT
-   Particle system, animations, navbar, counters
+   Navbar, galleries, i18n, interactions
    ============================================================ */
 
 'use strict';
-
-// ============================================================
-// PARTICLE SYSTEM — canvas (hero only, pauses when off-screen)
-// ============================================================
-
-const canvas = document.getElementById('particle-canvas');
-const ctx    = canvas ? canvas.getContext('2d') : null;
-let particles = [];
-let rafId;
-let canvasVisible = true;
-
-function resizeCanvas() {
-    if (!canvas) return;
-    canvas.width  = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
-
-class Particle {
-    constructor() {
-        this.init();
-    }
-
-    init() {
-        this.x     = Math.random() * canvas.width;
-        this.y     = Math.random() * canvas.height;
-        this.size  = Math.random() * 1.2 + 0.3;
-        this.vx    = (Math.random() - 0.5) * 0.22;
-        this.vy    = (Math.random() - 0.5) * 0.22;
-        this.alpha = Math.random() * 0.4 + 0.06;
-        this.isPurple = Math.random() > 0.7;
-    }
-
-    update() {
-        this.x += this.vx;
-        this.y += this.vy;
-
-        if (this.x < -2)               this.x = canvas.width  + 2;
-        if (this.x > canvas.width + 2) this.x = -2;
-        if (this.y < -2)               this.y = canvas.height + 2;
-        if (this.y > canvas.height + 2) this.y = -2;
-    }
-
-    draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = this.isPurple
-            ? `rgba(139, 63, 208, ${this.alpha})`
-            : `rgba(200, 190, 255, ${this.alpha * 0.35})`;
-        ctx.fill();
-    }
-}
-
-function buildParticles() {
-    if (!canvas || !ctx) return;
-    particles = [];
-    // Cap at 60 — enough for effect, light on GPU
-    const count = Math.min(60, Math.floor((canvas.width * canvas.height) / 22000));
-    for (let i = 0; i < count; i++) {
-        particles.push(new Particle());
-    }
-}
-
-function tickParticles() {
-    if (!canvas || !ctx) return;
-    if (!canvasVisible) {
-        rafId = requestAnimationFrame(tickParticles);
-        return;
-    }
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (const p of particles) {
-        p.update();
-        p.draw();
-    }
-    rafId = requestAnimationFrame(tickParticles);
-}
-
-// Pause canvas loop when hero is off-screen
-(function watchCanvasVisibility() {
-    const heroSection = document.querySelector('.hero');
-    if (!heroSection) return;
-
-    const obs = new IntersectionObserver(entries => {
-        canvasVisible = entries[0].isIntersecting;
-    }, { threshold: 0 });
-
-    obs.observe(heroSection);
-})();
 
 // ============================================================
 // NAVBAR
@@ -263,15 +175,6 @@ if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
 // ============================================================
 // WINDOW EVENTS
 // ============================================================
-
-let resizeTimer;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-        resizeCanvas();
-        if (canvas && ctx) buildParticles();
-    }, 250);
-}, { passive: true });
 
 window.addEventListener('scroll', onScroll, { passive: true });
 
@@ -1541,11 +1444,6 @@ function initI18n() {
 // ============================================================
 
 function init() {
-    resizeCanvas();
-    if (canvas && ctx) {
-        buildParticles();
-        tickParticles();
-    }
     onScroll();
     initDjGallery();
     initTimelineMobileCarousels();

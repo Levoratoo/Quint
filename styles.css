@@ -492,6 +492,8 @@ section {
     overflow: hidden;
     padding: calc(var(--nav-total) + 5rem) calc(var(--page-gutter) + var(--safe-right)) 5rem calc(var(--page-gutter) + var(--safe-left));
     background: var(--bg) url('Fotos hero/semfundo.png') center right / cover no-repeat;
+    /* Linha superior discreta — acabamento editorial */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
 }
 
 .hero::before {
@@ -509,6 +511,26 @@ section {
     pointer-events: none;
 }
 
+/* Glow ambiente muito suave + vinheta vertical (sem partículas) */
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse 72% 58% at 76% 44%, rgba(139, 63, 208, 0.1) 0%, transparent 58%),
+        radial-gradient(ellipse 48% 38% at 10% 86%, rgba(45, 20, 72, 0.35) 0%, transparent 52%),
+        linear-gradient(180deg, rgba(4, 3, 10, 0.4) 0%, transparent 32%, transparent 68%, rgba(4, 3, 10, 0.45) 100%);
+    animation: heroAmbient 24s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .hero::after {
+        animation: none;
+    }
+}
+
 /* ============ LEFT CONTENT ============ */
 .hero-content {
     position: relative;
@@ -516,6 +538,16 @@ section {
     max-width: 640px;
     flex-shrink: 0;
     animation: fadeInUp 0.85s ease both;
+}
+
+/* Traço superior — hierarquia visual clean */
+.hero-content::before {
+    content: '';
+    display: block;
+    width: min(120px, 28vw);
+    height: 1px;
+    margin-bottom: 1.75rem;
+    background: linear-gradient(90deg, rgba(139, 63, 208, 0.65), rgba(139, 63, 208, 0.08));
 }
 
 /* ---- Hero Logo (substitui o texto QUINT) ---- */
@@ -533,35 +565,23 @@ section {
     width: auto;
     max-width: min(92vw, 520px);
     display: block;
-    filter: brightness(1.02);
+    filter: brightness(1.02) drop-shadow(0 16px 48px rgba(0, 0, 0, 0.55));
     z-index: 1;
 }
 
-/* Pill tag — like the references */
+/* Eyebrow — tipografia sóbria, borda lateral em vez de “bolinha” */
 .hero-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    background: rgba(139, 63, 208, 0.12);
-    border: 1px solid rgba(139, 63, 208, 0.30);
-    border-radius: 999px;
-    padding: 0.4rem 1rem;
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: #9B50E8;
-    text-transform: uppercase;
+    display: inline-block;
     margin-bottom: 2rem;
-}
-
-.pill-dot {
-    width: 7px;
-    height: 7px;
-    background: #9B50E8;
-    border-radius: 50%;
-    box-shadow: 0 0 8px rgba(139, 63, 208, 0.6);
-    flex-shrink: 0;
-    animation: pulseDot 2s ease-in-out infinite;
+    padding: 0.35rem 0 0.35rem 0.95rem;
+    border-left: 2px solid rgba(155, 80, 232, 0.55);
+    background: transparent;
+    border-radius: 0;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: rgba(196, 170, 235, 0.92);
+    text-transform: uppercase;
 }
 
 /* Title — huge, bold, two lines */
@@ -595,9 +615,10 @@ section {
 
 .hero-desc {
     font-size: clamp(0.9rem, 1.5vw, 1.05rem);
-    color: var(--text-muted);
-    line-height: 1.8;
+    color: rgba(200, 198, 210, 0.88);
+    line-height: 1.82;
     font-weight: 300;
+    letter-spacing: 0.02em;
     margin-bottom: 2.5rem;
     max-width: 420px;
 }
@@ -783,7 +804,7 @@ section {
 .scroll-line {
     width: 1px;
     height: 44px;
-    background: linear-gradient(to bottom, rgba(255,179,0,0.6), transparent);
+    background: linear-gradient(to bottom, rgba(139, 63, 208, 0.55), transparent);
     animation: scrollBounce 1.8s ease-in-out infinite;
 }
 .scroll-indicator span {
@@ -2399,6 +2420,11 @@ section {
     to   { opacity: 1; }
 }
 
+@keyframes heroAmbient {
+    0%   { opacity: 0.9; }
+    100% { opacity: 1; }
+}
+
 @keyframes pulseDot {
     0%, 100% { opacity: 1; box-shadow: 0 0 6px var(--primary-glow); }
     50%       { opacity: 0.5; box-shadow: 0 0 12px var(--primary-glow); }
@@ -2439,6 +2465,10 @@ section {
         order: 2;
     }
     .hero-pill { margin: 0 auto 1.5rem; }
+    .hero-content::before {
+        margin-left: auto;
+        margin-right: auto;
+    }
     .hero-desc { margin-left: auto; margin-right: auto; }
     .hero-buttons { justify-content: center; }
 
@@ -3554,7 +3584,7 @@ a.tl-edu-text-wrap:focus-visible {
     }
     .hero-pill {
         font-size: 0.62rem;
-        padding: 0.38rem 0.85rem;
+        padding: 0.38rem 0 0.38rem 0.85rem;
         margin-bottom: 1.5rem;
     }
     .hero-desc {
