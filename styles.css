@@ -504,7 +504,7 @@ section {
     gap: 2rem;
     overflow: hidden;
     padding: calc(var(--nav-total) + 5rem) calc(var(--page-gutter) + var(--safe-right)) 5rem calc(var(--page-gutter) + var(--safe-left));
-    background: var(--bg) url('Fotos hero/f50a0bb0-5a8f-4084-b368-7e2e43c4929d.png') center right / cover no-repeat;
+    background: var(--bg) url('Fotos hero/semfundo.png') center right / cover no-repeat;
 }
 
 .hero::before {
