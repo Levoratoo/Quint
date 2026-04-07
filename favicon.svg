@@ -1,14 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <defs>
-    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFC940"/>
-      <stop offset="55%" stop-color="#E5A000"/>
-      <stop offset="100%" stop-color="#B8860B"/>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e0a1a"/>
+      <stop offset="100%" stop-color="#05030e"/>
     </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c27aff"/>
+      <stop offset="55%" stop-color="#8B3FD0"/>
+      <stop offset="100%" stop-color="#5a1fa0"/>
+    </linearGradient>
+    <filter id="f">
+      <feGaussianBlur stdDeviation="1.2" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
   </defs>
-  <rect width="32" height="32" rx="6" fill="#050505"/>
-  <rect x="1" y="1" width="30" height="30" rx="5" fill="none" stroke="url(#g)" stroke-width="1.2" opacity="0.85"/>
-  <text x="16" y="23" font-family="Arial Black, sans-serif" font-size="19" font-weight="900"
-        fill="url(#g)" text-anchor="middle" letter-spacing="0">Q</text>
-  <rect x="8" y="25" width="16" height="2" rx="1" fill="#E5A000" opacity="0.85"/>
+
+  <!-- Background -->
+  <rect width="32" height="32" rx="6" fill="url(#bg)"/>
+
+  <!-- Purple border -->
+  <rect x="1" y="1" width="30" height="30" rx="5" fill="none"
+        stroke="url(#glow)" stroke-width="1.2" opacity="0.7"/>
+
+  <!-- Glow behind Q -->
+  <ellipse cx="16" cy="15" rx="9" ry="9"
+           fill="rgba(139,63,208,0.18)" filter="url(#f)"/>
+
+  <!-- Q letter — white like the logo -->
+  <text x="16" y="22.5"
+        font-family="Arial Black, Impact, sans-serif"
+        font-size="18" font-weight="900"
+        fill="#ffffff"
+        text-anchor="middle"
+        letter-spacing="-0.5">Q</text>
+
+  <!-- Purple accent line -->
+  <rect x="9" y="26" width="14" height="1.5" rx="0.75"
+        fill="url(#glow)" opacity="0.9"/>
 </svg>
