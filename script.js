@@ -1456,6 +1456,29 @@ function init() {
     initPressZipBundle();
     initTimelineStoryTabs();
     initI18n();
+    initTypingEffect();
+}
+
+// ============================================================
+// TYPING EFFECT — hero eyebrow
+// ============================================================
+function initTypingEffect() {
+    const pill = document.querySelector('.hero-pill');
+    if (!pill) return;
+
+    const fullText = pill.textContent.replace(/\s+/g, ' ').trim();
+    pill.textContent = '';
+    pill.classList.add('typing');
+
+    let i = 0;
+    const iv = setInterval(() => {
+        pill.textContent = fullText.slice(0, i + 1);
+        i++;
+        if (i >= fullText.length) {
+            clearInterval(iv);
+            setTimeout(() => pill.classList.remove('typing'), 900);
+        }
+    }, 52);
 }
 
 if (document.readyState === 'loading') {
