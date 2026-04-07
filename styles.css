@@ -985,8 +985,8 @@ section {
 .downloads-section {
     padding: 7rem 0 8rem;
     background:
-        radial-gradient(ellipse 80% 50% at 50% 0%,   rgba(255,179,0,0.06) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 50% 100%, rgba(255,179,0,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 50% at 50% 0%,   rgba(139, 63, 208,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 50% 100%, rgba(139, 63, 208,0.04) 0%, transparent 60%),
         #040404;
     border-top: 1px solid var(--border-subtle);
     border-bottom: 1px solid var(--border-subtle);
@@ -1058,15 +1058,15 @@ section {
 }
 
 .downloads-tab:hover {
-    border-color: rgba(255,179,0,0.35);
+    border-color: rgba(139, 63, 208,0.35);
     color: #fff;
 }
 
 .downloads-tab.active {
     color: #fff;
-    border-color: rgba(255,179,0,0.5);
-    background: linear-gradient(135deg, rgba(255,179,0,0.88) 0%, rgba(50, 12, 100,0.92) 100%);
-    box-shadow: 0 0 18px rgba(255,179,0,0.25);
+    border-color: rgba(139, 63, 208,0.5);
+    background: linear-gradient(135deg, rgba(139, 63, 208,0.88) 0%, rgba(50, 12, 100,0.92) 100%);
+    box-shadow: 0 0 18px rgba(139, 63, 208,0.25);
 }
 
 .downloads-panel {
@@ -1193,7 +1193,7 @@ section {
     border-radius: 999px;
     border-color: rgba(255, 70, 70, 0.38);
     color: #fff;
-    background: linear-gradient(135deg, rgba(255, 185, 0, 0.9) 0%, rgba(165, 8, 8, 0.92) 100%);
+    background: linear-gradient(135deg, rgba(139, 63, 208, 0.9) 0%, rgba(165, 8, 8, 0.92) 100%);
     box-shadow:
         0 0 0 1px rgba(139, 63, 208, 0.18),
         0 8px 18px rgba(110, 0, 0, 0.35);
@@ -1305,7 +1305,7 @@ section {
     position: absolute;
     inset: 0;
     background: linear-gradient(160deg,
-        rgba(255,179,0,0.12) 0%,
+        rgba(139, 63, 208,0.12) 0%,
         transparent 55%);
     opacity: 0;
     transition: opacity 0.32s ease;
@@ -1315,10 +1315,10 @@ section {
 
 .download-card:hover {
     transform: translateY(-6px) scale(1.02);
-    border-color: rgba(255,179,0,0.5);
+    border-color: rgba(139, 63, 208,0.5);
     box-shadow:
         0 20px 48px rgba(0,0,0,0.55),
-        0 0 28px rgba(255,179,0,0.18),
+        0 0 28px rgba(139, 63, 208,0.18),
         inset 0 1px 0 rgba(255,80,80,0.12);
 }
 
@@ -1380,9 +1380,9 @@ section {
     gap: 0.5rem;
     padding: 0.7rem 1rem;
     border-radius: 12px;
-    border: 1px solid rgba(255,179,0,0.6);
+    border: 1px solid rgba(139, 63, 208,0.6);
     background: linear-gradient(120deg,
-        rgba(255,179,0,0.95) 0%,
+        rgba(139, 63, 208,0.95) 0%,
         rgba(130,0,0,0.92) 100%);
     backdrop-filter: blur(8px);
     color: #fff;
@@ -1392,7 +1392,7 @@ section {
     font-family: var(--font);
     font-size: 0.65rem;
     font-weight: 700;
-    box-shadow: 0 6px 20px rgba(255,179,0,0.3);
+    box-shadow: 0 6px 20px rgba(139, 63, 208,0.3);
     transform: translateY(8px);
     opacity: 0;
     transition: opacity 0.28s ease, transform 0.28s ease, box-shadow 0.28s ease;
@@ -1404,7 +1404,7 @@ section {
 }
 
 .download-btn:hover {
-    box-shadow: 0 10px 28px rgba(255,179,0,0.45);
+    box-shadow: 0 10px 28px rgba(139, 63, 208,0.45);
 }
 
 /* Shine sweep on the button */
@@ -1504,7 +1504,7 @@ section {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(255,179,0,0.08) 0%, transparent 60%);
+    background: linear-gradient(135deg, rgba(139, 63, 208,0.08) 0%, transparent 60%);
     opacity: 0;
     transition: opacity 0.35s ease;
     border-radius: 12px;
@@ -1512,8 +1512,8 @@ section {
 
 .lugares-item:hover {
     transform: scale(1.04);
-    box-shadow: 0 0 28px rgba(255,179,0,0.35), 0 8px 32px rgba(0,0,0,0.6);
-    border-color: rgba(255,179,0,0.35);
+    box-shadow: 0 0 28px rgba(139, 63, 208,0.35), 0 8px 32px rgba(0,0,0,0.6);
+    border-color: rgba(139, 63, 208,0.35);
     z-index: 2;
 }
 
@@ -1548,10 +1548,10 @@ section {
     position: relative;
     padding: 7rem 0 6rem;
     background:
-        radial-gradient(ellipse 70% 60% at 20% 50%, rgba(255,179,0,0.09) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 60% at 20% 50%, rgba(139, 63, 208,0.09) 0%, transparent 60%),
         radial-gradient(ellipse 50% 50% at 80% 50%, rgba(180,0,0,0.05) 0%, transparent 60%),
         #040404;
-    border-bottom: 1px solid rgba(255,179,0,0.12);
+    border-bottom: 1px solid rgba(139, 63, 208,0.12);
     overflow: hidden;
 }
 
@@ -1559,7 +1559,7 @@ section {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background: radial-gradient(ellipse 60% 80% at 15% 50%, rgba(255,179,0,0.07) 0%, transparent 55%);
+    background: radial-gradient(ellipse 60% 80% at 15% 50%, rgba(139, 63, 208,0.07) 0%, transparent 55%);
     z-index: 0;
 }
 
@@ -1583,7 +1583,7 @@ section {
     position: absolute;
     inset: -18px;
     border-radius: 20px;
-    background: radial-gradient(ellipse at center, rgba(255,179,0,0.28) 0%, transparent 70%);
+    background: radial-gradient(ellipse at center, rgba(139, 63, 208,0.28) 0%, transparent 70%);
     filter: blur(28px);
     z-index: 0;
     animation: fsPosterPulse 3.5s ease-in-out infinite;
@@ -1602,7 +1602,7 @@ section {
     position: relative;
     z-index: 1;
     box-shadow:
-        0 0 0 1px rgba(255,179,0,0.2),
+        0 0 0 1px rgba(139, 63, 208,0.2),
         0 20px 60px rgba(0,0,0,0.7);
     object-fit: cover;
 }
@@ -1616,7 +1616,7 @@ section {
     display: flex;
     align-items: center;
     gap: 6px;
-    background: rgba(255,179,0,0.92);
+    background: rgba(139, 63, 208,0.92);
     backdrop-filter: blur(8px);
     color: #fff;
     font-family: var(--font);
@@ -1626,7 +1626,7 @@ section {
     text-transform: uppercase;
     padding: 5px 11px;
     border-radius: 999px;
-    box-shadow: 0 0 18px rgba(255,179,0,0.55);
+    box-shadow: 0 0 18px rgba(139, 63, 208,0.55);
 }
 
 .fs-badge-dot {
@@ -1666,7 +1666,7 @@ section {
     color: var(--text);
     letter-spacing: 0.04em;
     line-height: 0.9;
-    text-shadow: 0 0 40px rgba(255,179,0,0.25);
+    text-shadow: 0 0 40px rgba(139, 63, 208,0.25);
 }
 
 .fs-subtitle {
@@ -1693,7 +1693,7 @@ section {
     overflow: hidden;
     margin-bottom: 1.6rem;
     box-shadow:
-        0 0 0 1px rgba(255,179,0,0.1),
+        0 0 0 1px rgba(139, 63, 208,0.1),
         0 8px 28px rgba(0,0,0,0.5);
 }
 
@@ -1805,7 +1805,7 @@ section {
     background: var(--primary);
     border-color: var(--primary);
     color: #fff;
-    box-shadow: 0 0 20px rgba(255,179,0,0.4);
+    box-shadow: 0 0 20px rgba(139, 63, 208,0.4);
 }
 
 .stream-tab.active .tab-count {
@@ -1854,8 +1854,8 @@ section {
 }
 
 .sc-card:hover {
-    border-color: rgba(255,179,0,0.3);
-    box-shadow: 0 0 24px rgba(255,179,0,0.12);
+    border-color: rgba(139, 63, 208,0.3);
+    box-shadow: 0 0 24px rgba(139, 63, 208,0.12);
 }
 
 .sc-card-label {
@@ -2322,7 +2322,7 @@ section {
 }
 .footer-logo:hover .footer-logo-img {
     opacity: 1;
-    filter: drop-shadow(0 0 12px rgba(255,179,0,0.55));
+    filter: drop-shadow(0 0 12px rgba(139, 63, 208,0.55));
 }
 
 .footer-tagline {
@@ -2909,15 +2909,15 @@ a.tl-edu-text-wrap:focus-visible {
     height: 100%;
     pointer-events: none;
     z-index: 0;
-    background: rgba(255,179,0,0.08);
+    background: rgba(139, 63, 208,0.08);
 }
 
 .tl-spine-line {
     width: 100%;
     height: 0;
     max-height: 100%;
-    background: linear-gradient(to bottom, var(--primary), rgba(255,179,0,0.4));
-    box-shadow: 0 0 12px rgba(255,179,0,0.4);
+    background: linear-gradient(to bottom, var(--primary), rgba(139, 63, 208,0.4));
+    box-shadow: 0 0 12px rgba(139, 63, 208,0.4);
     transition: height 0.1s linear;
 }
 
@@ -2952,7 +2952,7 @@ a.tl-edu-text-wrap:focus-visible {
     border-radius: 50%;
     background: var(--bg);
     border: 2px solid var(--primary);
-    box-shadow: 0 0 18px rgba(255,179,0,0.6), 0 0 40px rgba(255,179,0,0.2);
+    box-shadow: 0 0 18px rgba(139, 63, 208,0.6), 0 0 40px rgba(139, 63, 208,0.2);
     position: relative;
     flex-shrink: 0;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -2968,7 +2968,7 @@ a.tl-edu-text-wrap:focus-visible {
 .tl-node-dot--red .tl-node-dot-inner {
     width: 24px;
     height: 24px;
-    box-shadow: 0 0 30px rgba(255,179,0,0.9), 0 0 60px rgba(255,179,0,0.3);
+    box-shadow: 0 0 30px rgba(139, 63, 208,0.9), 0 0 60px rgba(139, 63, 208,0.3);
 }
 .tl-node-dot--tension {
     position: absolute;
@@ -3006,8 +3006,8 @@ a.tl-edu-text-wrap:focus-visible {
 }
 .tl-node-year--red {
     color: transparent;
-    -webkit-text-stroke: 1.5px rgba(255,179,0,0.45);
-    text-shadow: 0 0 40px rgba(255,179,0,0.15);
+    -webkit-text-stroke: 1.5px rgba(139, 63, 208,0.45);
+    text-shadow: 0 0 40px rgba(139, 63, 208,0.15);
 }
 
 .tl-chapter-tag {
@@ -3033,7 +3033,7 @@ a.tl-edu-text-wrap:focus-visible {
 }
 .tl-title-accent {
     color: var(--primary);
-    text-shadow: 0 0 25px rgba(255,179,0,0.4);
+    text-shadow: 0 0 25px rgba(139, 63, 208,0.4);
 }
 
 .tl-chapter-desc {
@@ -3053,7 +3053,7 @@ a.tl-edu-text-wrap:focus-visible {
     padding: 0.55rem 1.5rem;
     margin-bottom: 1.4rem;
     width: fit-content;
-    background: linear-gradient(110deg, #ffb300 0%, #2D1054 45%, #080414 100%);
+    background: linear-gradient(110deg, #8B3FD0 0%, #2D1054 45%, #080414 100%);
     border: 1px solid rgba(255, 60, 60, 0.35);
     box-shadow:
         0 0 18px rgba(139, 63, 208, 0.45),
@@ -3174,7 +3174,7 @@ a.tl-edu-text-wrap:focus-visible {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(255,179,0,0.9);
+    background: rgba(139, 63, 208,0.9);
     color: #fff;
     font-size: 0.7rem;
     font-weight: 700;
@@ -3182,7 +3182,7 @@ a.tl-edu-text-wrap:focus-visible {
     text-transform: uppercase;
     padding: 0.35rem 0.8rem;
     border-radius: 2px;
-    box-shadow: 0 0 20px rgba(255,179,0,0.6);
+    box-shadow: 0 0 20px rgba(139, 63, 208,0.6);
 }
 
 /* ---- Photo grid (chapter 2: mosaic) ---- */
@@ -3340,7 +3340,7 @@ a.tl-edu-text-wrap:focus-visible {
 .tl-tension-bg {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(255,179,0,0.12) 0%, transparent 65%);
+    background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(139, 63, 208,0.12) 0%, transparent 65%);
     animation: tensionPulse 3s ease-in-out infinite;
 }
 
@@ -3381,8 +3381,8 @@ a.tl-edu-text-wrap:focus-visible {
     display: block;
     position: relative;
     text-shadow:
-        0 0 60px rgba(255,179,0,0.5),
-        0 0 120px rgba(255,179,0,0.2);
+        0 0 60px rgba(139, 63, 208,0.5),
+        0 0 120px rgba(139, 63, 208,0.2);
     animation: glowPulse 3s ease-in-out infinite;
 }
 .tl-tension-now-text::before,
@@ -3407,7 +3407,7 @@ a.tl-edu-text-wrap:focus-visible {
 
 .tl-tension-line {
     width: 1px; height: 60px;
-    background: linear-gradient(to bottom, rgba(255,179,0,0.8), transparent);
+    background: linear-gradient(to bottom, rgba(139, 63, 208,0.8), transparent);
     margin: 0 auto 1.5rem;
 }
 .tl-tension-sub {
