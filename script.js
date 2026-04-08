@@ -492,6 +492,9 @@ const i18n = {
         'nav-historia'       : 'História',
         'nav-sobre'          : 'Sobre',
         'nav-musicas'        : 'Músicas',
+        'nav-drops'          : 'Drops',
+        'drops-tag'          : 'ELETRÔNICA',
+        'drops-sub'          : 'Energia no máximo. Clique para assistir.',
         'hero-desc'          : 'Sets construídos a partir da identidade musical.<br>Cada pista, uma história. Cada drop, uma experiência.',
         'hero-listen'        : 'Ouvir Agora',
         'badge-pressure'     : 'Pressão de Pista',
@@ -634,6 +637,9 @@ const i18n = {
         'nav-historia'       : 'History',
         'nav-sobre'          : 'About',
         'nav-musicas'        : 'Music',
+        'nav-drops'          : 'Drops',
+        'drops-tag'          : 'ELECTRONIC',
+        'drops-sub'          : 'Maximum energy. Click to watch.',
         'hero-desc'          : 'Sets built from musical identity.<br>Every track, a story. Every drop, an experience.',
         'hero-listen'        : 'Listen Now',
         'badge-pressure'     : 'Floor Pressure',
@@ -776,6 +782,9 @@ const i18n = {
         'nav-historia'       : 'Historia',
         'nav-sobre'          : 'Sobre',
         'nav-musicas'        : 'Música',
+        'nav-drops'          : 'Drops',
+        'drops-tag'          : 'ELECTRÓNICA',
+        'drops-sub'          : 'Energía al máximo. Haz clic para ver.',
         'hero-desc'          : 'Sets construidos desde la identidad musical.<br>Cada pista, una historia. Cada drop, una experiencia.',
         'hero-listen'        : 'Escuchar Ahora',
         'badge-pressure'     : 'Presión de Pista',
@@ -918,6 +927,9 @@ const i18n = {
         'nav-historia'       : '历程',
         'nav-sobre'          : '关于',
         'nav-musicas'        : '音乐',
+        'nav-drops'          : 'Drops',
+        'drops-tag'          : '电子音乐',
+        'drops-sub'          : '能量拉满。点击观看。',
         'hero-desc'          : '从音乐身份构建的曲目集。<br>每首曲目，一个故事。每次降拍，一次体验。',
         'hero-listen'        : '立即收听',
         'badge-pressure'     : '舞台张力',
@@ -1060,6 +1072,9 @@ const i18n = {
         'nav-historia'       : 'Geschichte',
         'nav-sobre'          : 'Über mich',
         'nav-musicas'        : 'Musik',
+        'nav-drops'          : 'Drops',
+        'drops-tag'          : 'ELEKTRONIK',
+        'drops-sub'          : 'Volle Energie. Klicken zum Ansehen.',
         'hero-desc'          : 'Sets aufgebaut aus musikalischer Identität.<br>Jeder Track, eine Geschichte. Jeder Drop, ein Erlebnis.',
         'hero-listen'        : 'Jetzt hören',
         'badge-pressure'     : 'Floor-Druck',
@@ -1202,6 +1217,9 @@ const i18n = {
         'nav-historia'       : 'ヒストリー',
         'nav-sobre'          : 'プロフィール',
         'nav-musicas'        : 'ミュージック',
+        'nav-drops'          : 'ドロップス',
+        'drops-tag'          : 'エレクトロニカ',
+        'drops-sub'          : 'エネルギー全開。クリックして視聴。',
         'hero-desc'          : '音楽的アイデンティティから構築されたセット。<br>すべてのトラックに物語がある。すべてのドロップに体験がある。',
         'hero-listen'        : '今すぐ聴く',
         'badge-pressure'     : 'フロアの圧力',
@@ -1457,6 +1475,103 @@ function init() {
     initTimelineStoryTabs();
     initI18n();
     initTypingEffect();
+    initDrops();
+}
+
+// ============================================================
+// DROPS DE ELETRÔNICA
+// ============================================================
+function initDrops() {
+    const reel  = document.getElementById('drops-reel');
+    const modal = document.getElementById('drop-modal');
+    const modalVideo = document.getElementById('drop-modal-video');
+    const closeBtn   = document.getElementById('drop-modal-close');
+    const backdrop   = modal ? modal.querySelector('.drop-modal-backdrop') : null;
+
+    if (!reel || !modal) return;
+
+    const cards = reel.querySelectorAll('.drop-card');
+    const isTouch = () => window.matchMedia('(hover: none)').matches;
+
+    // ---- Hover play/pause (desktop only) ----
+    cards.forEach(card => {
+        const video = card.querySelector('video');
+        if (!video) return;
+
+        card.addEventListener('mouseenter', () => {
+            if (isTouch()) return;
+            video.play().catch(() => {});
+            card.classList.add('is-active');
+        });
+
+        card.addEventListener('mouseleave', () => {
+            if (isTouch()) return;
+            video.pause();
+            video.currentTime = 0;
+            card.classList.remove('is-active');
+        });
+    });
+
+    // ---- Click → open modal ----
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            if (reel.classList.contains('is-dragging')) return;
+            const src = card.dataset.src;
+            if (!src) return;
+            modalVideo.src = src;
+            modalVideo.load();
+            modal.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+            modalVideo.play().catch(() => {});
+        });
+    });
+
+    // ---- Close modal ----
+    function closeModal() {
+        modal.classList.remove('is-open');
+        modalVideo.pause();
+        modalVideo.src = '';
+        document.body.style.overflow = '';
+    }
+
+    closeBtn && closeBtn.addEventListener('click', closeModal);
+    backdrop && backdrop.addEventListener('click', closeModal);
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+
+    // ---- Drag scroll (desktop) ----
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+    let moved = false;
+
+    reel.addEventListener('mousedown', e => {
+        isDown = true;
+        moved = false;
+        startX = e.pageX - reel.offsetLeft;
+        scrollLeft = reel.scrollLeft;
+        reel.classList.add('is-dragging');
+    });
+
+    reel.addEventListener('mouseleave', () => {
+        isDown = false;
+        reel.classList.remove('is-dragging');
+    });
+
+    reel.addEventListener('mouseup', () => {
+        isDown = false;
+        reel.classList.remove('is-dragging');
+    });
+
+    reel.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - reel.offsetLeft;
+        const walk = (x - startX) * 1.3;
+        reel.scrollLeft = scrollLeft - walk;
+        if (Math.abs(walk) > 5) moved = true;
+    });
 }
 
 // ============================================================

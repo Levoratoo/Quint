@@ -1868,6 +1868,405 @@ section {
 }
 
 /* -------------------------------------------------------
+   DROPS DE ELETRÔNICA
+------------------------------------------------------- */
+.drops-section {
+    position: relative;
+    padding: 7rem 0 6rem;
+    background: #030208;
+    overflow: hidden;
+    border-top: 1px solid rgba(139, 63, 208, 0.12);
+    border-bottom: 1px solid rgba(139, 63, 208, 0.12);
+}
+
+/* Grain animado */
+.drops-grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    animation: dropsGrain 0.4s steps(1) infinite;
+}
+
+@keyframes dropsGrain {
+    0%  { background-position: 0 0; }
+    25% { background-position: -40px 20px; }
+    50% { background-position: 20px -30px; }
+    75% { background-position: -20px 40px; }
+}
+
+/* Glow roxo pulsante no fundo */
+.drops-ambient {
+    position: absolute;
+    bottom: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 60%;
+    background: radial-gradient(ellipse, rgba(139, 63, 208, 0.18) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    animation: dropsAmbient 4s ease-in-out infinite alternate;
+}
+
+@keyframes dropsAmbient {
+    from { opacity: 0.5; transform: translateX(-50%) scale(0.95); }
+    to   { opacity: 1;   transform: translateX(-50%) scale(1.1); }
+}
+
+/* Header */
+.drops-header {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 3.5rem;
+}
+
+.drops-eyebrow {
+    margin-bottom: 1rem;
+}
+
+/* Título "DROPS" com glitch cromático */
+.drops-title {
+    font-family: var(--font-display);
+    font-size: clamp(5rem, 14vw, 12rem);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 0.85;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 60px rgba(139, 63, 208, 0.4);
+}
+
+.drops-title::before,
+.drops-title::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    pointer-events: none;
+    animation: dropsGlitch 6s infinite;
+}
+
+.drops-title::before {
+    color: #0ff;
+    clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+    animation-delay: 0s;
+    mix-blend-mode: screen;
+}
+
+.drops-title::after {
+    color: #f0f;
+    clip-path: polygon(0 55%, 100% 55%, 100% 70%, 0 70%);
+    animation-delay: 0.04s;
+    mix-blend-mode: screen;
+}
+
+@keyframes dropsGlitch {
+    0%, 88%, 100% { transform: translate(0); opacity: 0; }
+    90%           { transform: translate(-3px, 1px); opacity: 0.7; }
+    92%           { transform: translate(3px, -1px); opacity: 0.8; }
+    94%           { transform: translate(-2px, 2px); opacity: 0.6; }
+    96%           { transform: translate(0); opacity: 0; }
+}
+
+.drops-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+/* Reel scrollável */
+.drops-reel-wrap {
+    position: relative;
+    z-index: 1;
+    /* Fade nas bordas */
+    mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+}
+
+.drops-reel {
+    display: flex;
+    gap: 1.2rem;
+    padding: 1.5rem 5vw 2.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    cursor: grab;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    will-change: transform;
+}
+
+.drops-reel::-webkit-scrollbar { display: none; }
+.drops-reel.is-dragging { cursor: grabbing; scroll-behavior: auto; }
+
+/* Cards individuais */
+.drop-card {
+    flex-shrink: 0;
+    width: clamp(180px, 18vw, 260px);
+    aspect-ratio: 9 / 16;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(139, 63, 208, 0.2);
+    scroll-snap-align: start;
+    position: relative;
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                border-color 0.35s ease,
+                box-shadow 0.35s ease;
+    background: #08050f;
+}
+
+.drop-card.is-active {
+    border-color: rgba(139, 63, 208, 0.8);
+    box-shadow: 0 0 30px rgba(139, 63, 208, 0.5), 0 0 60px rgba(139, 63, 208, 0.2);
+}
+
+@media (hover: hover) {
+    .drop-card:hover {
+        transform: scale(1.04) translateY(-6px);
+        border-color: rgba(139, 63, 208, 0.6);
+        box-shadow: 0 0 24px rgba(139, 63, 208, 0.4), 0 12px 32px rgba(0,0,0,0.7);
+        z-index: 2;
+    }
+}
+
+.drop-thumb {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.drop-thumb video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Overlay sobre o vídeo */
+.drop-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 40%,
+        rgba(6,4,14,0.7) 100%
+    );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.drop-card.is-active .drop-overlay {
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 55%,
+        rgba(6,4,14,0.85) 100%
+    );
+}
+
+/* Ícone de play */
+.drop-play-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(139, 63, 208, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: #fff;
+    box-shadow: 0 0 24px rgba(139, 63, 208, 0.6);
+    transition: transform 0.25s ease, opacity 0.25s ease, background 0.25s ease;
+    padding-left: 3px;
+}
+
+.drop-card.is-active .drop-play-icon {
+    opacity: 0;
+    transform: scale(0.7);
+}
+
+/* Barras de energia (visíveis quando playing) */
+.drop-energy {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 4px;
+    align-items: flex-end;
+    height: 22px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.drop-card.is-active .drop-energy { opacity: 1; }
+
+.drop-energy span {
+    display: block;
+    width: 4px;
+    border-radius: 2px;
+    background: var(--primary-light);
+    box-shadow: 0 0 6px rgba(176, 110, 255, 0.8);
+    transform-origin: bottom;
+}
+
+.drop-energy span:nth-child(1) { animation: energyBar 0.6s ease-in-out infinite alternate; }
+.drop-energy span:nth-child(2) { animation: energyBar 0.4s ease-in-out infinite alternate 0.1s; }
+.drop-energy span:nth-child(3) { animation: energyBar 0.7s ease-in-out infinite alternate 0.05s; }
+
+@keyframes energyBar {
+    from { height: 4px;  opacity: 0.5; }
+    to   { height: 20px; opacity: 1; }
+}
+
+/* Sheen ao hover (só desktop) */
+.drop-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        110deg,
+        transparent 35%,
+        rgba(255,255,255,0.08) 50%,
+        transparent 65%
+    );
+    background-size: 200% 100%;
+    background-position: -100% 0;
+    z-index: 3;
+    pointer-events: none;
+    transition: background-position 0s;
+    border-radius: 16px;
+}
+
+@media (hover: hover) {
+    .drop-card:hover::before {
+        background-position: 200% 0;
+        transition: background-position 0.55s ease;
+    }
+}
+
+/* ---- Modal fullscreen ---- */
+.drop-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.drop-modal.is-open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.drop-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(3, 2, 8, 0.92);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.drop-modal-inner {
+    position: relative;
+    z-index: 1;
+    width: min(90vw, 480px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.drop-modal-close {
+    align-self: flex-end;
+    background: rgba(139, 63, 208, 0.2);
+    border: 1px solid rgba(139, 63, 208, 0.4);
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.2s ease;
+    backdrop-filter: blur(8px);
+}
+
+.drop-modal-close:hover {
+    background: rgba(139, 63, 208, 0.5);
+    transform: rotate(90deg);
+}
+
+.drop-modal-video-wrap {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(139, 63, 208, 0.5);
+    box-shadow:
+        0 0 40px rgba(139, 63, 208, 0.4),
+        0 0 80px rgba(139, 63, 208, 0.15),
+        0 24px 60px rgba(0,0,0,0.8);
+    position: relative;
+}
+
+.drop-modal-video-wrap::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(139,63,208,0.6), transparent 50%, rgba(176,110,255,0.3));
+    z-index: 0;
+    pointer-events: none;
+}
+
+#drop-modal-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 18px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .drops-section { padding: 5rem 0 4rem; }
+    .drop-card { width: clamp(150px, 42vw, 200px); }
+    .drop-modal-inner { width: 92vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .drops-grain,
+    .drops-ambient,
+    .drops-title::before,
+    .drops-title::after,
+    .drop-energy span { animation: none; }
+    .drop-card { transition: none; }
+}
+
+/* -------------------------------------------------------
    MUSIC
 ------------------------------------------------------- */
 .music {

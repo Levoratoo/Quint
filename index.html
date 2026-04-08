@@ -83,6 +83,7 @@
                 <li><a href="#historia" class="nav-link" data-i18n="nav-historia">História</a></li>
                 <li><a href="#sobre" class="nav-link" data-i18n="nav-sobre">Sobre</a></li>
                 <li><a href="#musicas" class="nav-link" data-i18n="nav-musicas">Músicas</a></li>
+                <li><a href="#drops" class="nav-link" data-i18n="nav-drops">Drops</a></li>
                 <li><a href="#booking" class="nav-link nav-cta">Booking</a></li>
             </ul>
 
@@ -927,6 +928,111 @@
             </div>
         </div>
     </section>
+
+    <!-- ======================================
+         DROPS DE ELETRÔNICA
+    ======================================= -->
+    <section class="drops-section" id="drops">
+        <div class="drops-grain"></div>
+        <div class="drops-ambient"></div>
+
+        <div class="drops-header container reveal-up">
+            <div class="drops-eyebrow">
+                <span class="section-tag" data-i18n="drops-tag">ELETRÔNICA</span>
+            </div>
+            <h2 class="drops-title" data-text="DROPS">DROPS</h2>
+            <p class="drops-subtitle" data-i18n="drops-sub">Energia no máximo. Clique para assistir.</p>
+        </div>
+
+        <div class="drops-reel-wrap">
+            <div class="drops-reel" id="drops-reel">
+
+                <article class="drop-card" data-src="DROPS/2.mp4">
+                    <div class="drop-thumb">
+                        <video src="DROPS/2.mp4" muted loop playsinline preload="none"></video>
+                        <div class="drop-overlay">
+                            <div class="drop-play-icon"><i class="fas fa-play"></i></div>
+                            <div class="drop-energy"><span></span><span></span><span></span></div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="drop-card" data-src="DROPS/8.mp4">
+                    <div class="drop-thumb">
+                        <video src="DROPS/8.mp4" muted loop playsinline preload="none"></video>
+                        <div class="drop-overlay">
+                            <div class="drop-play-icon"><i class="fas fa-play"></i></div>
+                            <div class="drop-energy"><span></span><span></span><span></span></div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="drop-card" data-src="DROPS/10.mp4">
+                    <div class="drop-thumb">
+                        <video src="DROPS/10.mp4" muted loop playsinline preload="none"></video>
+                        <div class="drop-overlay">
+                            <div class="drop-play-icon"><i class="fas fa-play"></i></div>
+                            <div class="drop-energy"><span></span><span></span><span></span></div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="drop-card" data-src="DROPS/11.mp4">
+                    <div class="drop-thumb">
+                        <video src="DROPS/11.mp4" muted loop playsinline preload="none"></video>
+                        <div class="drop-overlay">
+                            <div class="drop-play-icon"><i class="fas fa-play"></i></div>
+                            <div class="drop-energy"><span></span><span></span><span></span></div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="drop-card" data-src="DROPS/13.mp4">
+                    <div class="drop-thumb">
+                        <video src="DROPS/13.mp4" muted loop playsinline preload="none"></video>
+                        <div class="drop-overlay">
+                            <div class="drop-play-icon"><i class="fas fa-play"></i></div>
+                            <div class="drop-energy"><span></span><span></span><span></span></div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="drop-card" data-src="DROPS/14.mp4">
+                    <div class="drop-thumb">
+                        <video src="DROPS/14.mp4" muted loop playsinline preload="none"></video>
+                        <div class="drop-overlay">
+                            <div class="drop-play-icon"><i class="fas fa-play"></i></div>
+                            <div class="drop-energy"><span></span><span></span><span></span></div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="drop-card" data-src="DROPS/16.mp4">
+                    <div class="drop-thumb">
+                        <video src="DROPS/16.mp4" muted loop playsinline preload="none"></video>
+                        <div class="drop-overlay">
+                            <div class="drop-play-icon"><i class="fas fa-play"></i></div>
+                            <div class="drop-energy"><span></span><span></span><span></span></div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de vídeo fullscreen -->
+    <div class="drop-modal" id="drop-modal" role="dialog" aria-modal="true" aria-label="Vídeo drop">
+        <div class="drop-modal-backdrop"></div>
+        <div class="drop-modal-inner">
+            <button class="drop-modal-close" id="drop-modal-close" aria-label="Fechar">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="drop-modal-video-wrap">
+                <video id="drop-modal-video" controls playsinline></video>
+            </div>
+        </div>
+    </div>
 
     <!-- ======================================
          MÚSICAS
