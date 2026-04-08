@@ -1572,6 +1572,17 @@ function initDrops() {
         reel.scrollLeft = scrollLeft - walk;
         if (Math.abs(walk) > 5) moved = true;
     });
+
+    // ---- Scroll progress bar ----
+    const progressBar = document.getElementById('drops-progress-bar');
+    function updateProgress() {
+        if (!progressBar) return;
+        const max = reel.scrollWidth - reel.clientWidth;
+        const pct = max > 0 ? (reel.scrollLeft / max) * 100 : 0;
+        progressBar.style.width = pct + '%';
+    }
+    reel.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
 }
 
 // ============================================================
