@@ -1622,24 +1622,73 @@ section {
     z-index: 0;
 }
 
-/* Video-first layout */
-.fs-inner {
-    display: flex;
-    flex-direction: column;
-    gap: 2.4rem;
+/* ---- Split-screen layout ---- */
+.fs-split {
+    display: grid;
+    grid-template-columns: 1fr 1.35fr;
+    min-height: 560px;
     position: relative;
     z-index: 1;
 }
 
-/* Top row: foto + info lado a lado */
-.fs-top-row {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 2.8rem;
-    align-items: center;
+/* PAINEL ESQUERDO: foto com overlay */
+.fs-photo-panel {
+    position: relative;
+    overflow: hidden;
 }
 
-/* ---- Poster ---- */
+.fs-photo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.fs-photo-panel:hover .fs-photo-img {
+    transform: scale(1.04);
+}
+
+/* Gradiente sobre a foto — escurece de baixo */
+.fs-photo-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(to bottom, rgba(4,4,4,0.15) 0%, rgba(4,4,4,0.0) 30%, rgba(4,4,4,0.75) 65%, rgba(4,4,4,0.97) 100%),
+        linear-gradient(to right, rgba(4,4,4,0.0) 70%, rgba(4,4,4,0.6) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.8rem 2rem;
+}
+
+.fs-photo-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.fs-photo-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* PAINEL DIREITO: vídeo */
+.fs-video-panel {
+    background: #040404;
+    display: flex;
+    align-items: center;
+    padding: 2.4rem 2.8rem 2.4rem 2rem;
+}
+
+.fs-video-panel .fs-player {
+    width: 100%;
+    margin: 0;
+}
+
+/* ---- Poster (legado, mantido para compatibilidade mobile) ---- */
 .fs-poster-wrap {
     position: relative;
     flex-shrink: 0;
@@ -1650,6 +1699,13 @@ section {
     height: 280px;
     object-fit: cover;
     object-position: center top;
+    border-radius: 14px;
+    display: block;
+    position: relative;
+    z-index: 1;
+    box-shadow:
+        0 0 0 1px rgba(139, 63, 208,0.2),
+        0 20px 60px rgba(0,0,0,0.7);
 }
 
 .fs-poster-glow {
@@ -1749,22 +1805,16 @@ section {
 }
 
 .fs-desc {
-    color: var(--text-muted);
-    font-size: 0.92rem;
-    line-height: 1.75;
-    max-width: 480px;
-    margin-bottom: 2rem;
+    color: rgba(255,255,255,0.75);
+    font-size: 0.88rem;
+    line-height: 1.7;
+    max-width: 400px;
+    margin-bottom: 1.2rem;
 }
 
 .fs-player {
     width: 100%;
     margin-bottom: 0;
-}
-
-.fs-cta-wrap {
-    display: flex;
-    justify-content: center;
-    padding-top: 0.4rem;
 }
 
 /* YouTube cinematic frame */
@@ -1825,25 +1875,31 @@ section {
 
 /* ---- Responsive ---- */
 @media (max-width: 960px) {
-    .fs-top-row {
-        grid-template-columns: 180px 1fr;
-        gap: 2rem;
+    .fs-split {
+        grid-template-columns: 1fr;
+        min-height: unset;
     }
-    .fs-poster { height: 230px; }
+    .fs-photo-panel {
+        min-height: 420px;
+    }
+    .fs-video-panel {
+        padding: 2rem 1.6rem;
+    }
 }
 
 @media (max-width: 700px) {
     .featured-set {
-        padding: 5rem 0 4rem;
+        padding: 0;
     }
-    .fs-top-row {
-        grid-template-columns: 1fr;
-        gap: 1.6rem;
+    .fs-photo-panel {
+        min-height: 360px;
     }
-    .fs-poster-wrap {
-        max-width: 240px;
+    .fs-photo-overlay {
+        padding: 1.4rem 1.4rem;
     }
-    .fs-poster { height: 200px; }
+    .fs-video-panel {
+        padding: 1.6rem 1.2rem;
+    }
     .fs-title-line2 {
         font-size: clamp(2.6rem, 12vw, 4rem);
     }
