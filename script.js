@@ -1777,63 +1777,74 @@ function initDrops() {
 }
 
 // ============================================================
-// SUPORTE DE DJs — carrossel de vídeos de suporte
+// SUPORTE DE DJs — mesmo comportamento dos Drops; vídeo só carrega no hover
 // ============================================================
 function initSupporte() {
     const reel  = document.getElementById('suporte-reel');
     const modal = document.getElementById('drop-modal');
     const modalVideo = document.getElementById('drop-modal-video');
+    const closeBtn   = document.getElementById('drop-modal-close');
+    const backdrop   = modal ? modal.querySelector('.drop-modal-backdrop') : null;
 
-    if (!reel) return;
+    if (!reel || !modal) return;
 
-    const cards = reel.querySelectorAll('.sup-card');
+    const cards = reel.querySelectorAll('.drop-card');
     const isTouch = () => window.matchMedia('(hover: none)').matches;
 
-    // ---- Hover play/pause (desktop only) ----
+    function hydrateVideo(video) {
+        const ds = video.dataset.src;
+        if (ds && !video.getAttribute('src')) {
+            video.src = ds;
+        }
+    }
+
     cards.forEach(card => {
         const video = card.querySelector('video');
         if (!video) return;
+
         card.addEventListener('mouseenter', () => {
             if (isTouch()) return;
+            hydrateVideo(video);
             video.play().catch(() => {});
+            card.classList.add('is-active');
         });
+
         card.addEventListener('mouseleave', () => {
             if (isTouch()) return;
             video.pause();
             video.currentTime = 0;
+            card.classList.remove('is-active');
         });
     });
 
-    // ---- Click → open modal ----
-    if (modal && modalVideo) {
-        const closeBtn = document.getElementById('drop-modal-close');
-        const backdrop = modal.querySelector('.drop-modal-backdrop');
-
-        cards.forEach(card => {
-            card.addEventListener('click', () => {
-                if (reel.classList.contains('is-dragging')) return;
-                const src = card.dataset.src;
-                if (!src) return;
-                modalVideo.src = src;
-                modalVideo.load();
-                modal.classList.add('is-open');
-                document.body.style.overflow = 'hidden';
-                modalVideo.play().catch(() => {});
-            });
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            if (reel.classList.contains('is-dragging')) return;
+            const src = card.dataset.src;
+            if (!src) return;
+            const video = card.querySelector('video');
+            if (video) hydrateVideo(video);
+            modalVideo.src = src;
+            modalVideo.load();
+            modal.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+            modalVideo.play().catch(() => {});
         });
+    });
 
-        function closeModal() {
-            modal.classList.remove('is-open');
-            modalVideo.pause();
-            modalVideo.src = '';
-            document.body.style.overflow = '';
-        }
-        closeBtn && closeBtn.addEventListener('click', closeModal);
-        backdrop && backdrop.addEventListener('click', closeModal);
+    function closeModal() {
+        modal.classList.remove('is-open');
+        modalVideo.pause();
+        modalVideo.src = '';
+        document.body.style.overflow = '';
     }
+    closeBtn && closeBtn.addEventListener('click', closeModal);
+    backdrop && backdrop.addEventListener('click', closeModal);
 
-    // ---- Drag scroll (desktop) ----
-    let isDown = false, startX = 0, scrollLeft = 0;
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
     reel.addEventListener('mousedown', e => {
         isDown = true;
         startX = e.pageX - reel.offsetLeft;
@@ -1845,27 +1856,27 @@ function initSupporte() {
     reel.addEventListener('mousemove', e => {
         if (!isDown) return;
         e.preventDefault();
-        const walk = (e.pageX - reel.offsetLeft - startX) * 1.3;
-        reel.scrollLeft = scrollLeft - walk;
+        const x = e.pageX - reel.offsetLeft;
+        reel.scrollLeft = scrollLeft - (x - startX) * 1.3;
     });
 
-    // ---- Nav buttons ----
     const prevBtn = document.getElementById('suporte-prev');
     const nextBtn = document.getElementById('suporte-next');
     const cardWidth = () => {
-        const first = reel.querySelector('.sup-card');
-        if (!first) return 260;
-        return first.offsetWidth + (parseFloat(getComputedStyle(reel).gap) || 0);
+        const first = reel.querySelector('.drop-card');
+        if (!first) return 300;
+        const gap = parseFloat(getComputedStyle(reel).gap) || 0;
+        return first.offsetWidth + gap;
     };
     prevBtn && prevBtn.addEventListener('click', () => reel.scrollBy({ left: -cardWidth() * 2, behavior: 'smooth' }));
     nextBtn && nextBtn.addEventListener('click', () => reel.scrollBy({ left:  cardWidth() * 2, behavior: 'smooth' }));
 
-    // ---- Scroll progress bar ----
     const progressBar = document.getElementById('suporte-progress-bar');
     function updateProgress() {
         if (!progressBar) return;
         const max = reel.scrollWidth - reel.clientWidth;
-        progressBar.style.width = (max > 0 ? (reel.scrollLeft / max) * 100 : 0) + '%';
+        const pct = max > 0 ? (reel.scrollLeft / max) * 100 : 0;
+        progressBar.style.width = pct + '%';
     }
     reel.addEventListener('scroll', updateProgress, { passive: true });
     updateProgress();
