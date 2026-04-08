@@ -3666,7 +3666,10 @@ section {
 }
 
 @media (max-width: 960px) {
-    /* Hero: stack vertically on tablet/mobile */
+    /* Hero: stack vertically on tablet/mobile; foto puxa para a direita */
+    .hero-bg-img {
+        object-position: 78% 45%;
+    }
     .hero {
         flex-direction: column;
         justify-content: center;
@@ -4771,9 +4774,11 @@ a.tl-edu-text-wrap:focus-visible {
 
 /* ---- Mobile médio (≤768px) ---- */
 @media (max-width: 768px) {
-    /* Hero: overlay mais uniforme no portrait */
+    /* Hero: foto de fundo ancorada à direita (a figura fica no canto) */
+    .hero-bg-img {
+        object-position: right 42%;
+    }
     .hero {
-        background-position: 68% center;
         padding-top: calc(var(--nav-total) + 2.5rem);
         padding-bottom: 4rem;
     }
@@ -4819,9 +4824,11 @@ a.tl-edu-text-wrap:focus-visible {
 
 /* ---- Mobile pequeno (≤520px) ---- */
 @media (max-width: 520px) {
-    /* Hero */
+    /* Hero: reforça canto direito em telas estreitas */
+    .hero-bg-img {
+        object-position: right 38%;
+    }
     .hero {
-        background-position: 72% center;
         padding-top: calc(var(--nav-total) + 2rem);
         padding-bottom: 3rem;
     }
@@ -4876,6 +4883,9 @@ a.tl-edu-text-wrap:focus-visible {
 
 /* ---- Telas muito pequenas (≤380px) ---- */
 @media (max-width: 380px) {
+    .hero-bg-img {
+        object-position: right 35%;
+    }
     .hero-logo-img { height: clamp(100px, 32vw, 160px); }
     .hero-pill { font-size: 0.56rem; letter-spacing: 0.06em; }
     .stream-tab span { display: none; }   /* só ícone nas abas */
