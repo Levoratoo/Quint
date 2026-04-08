@@ -491,9 +491,20 @@ section {
     gap: 2rem;
     overflow: hidden;
     padding: calc(var(--nav-total) + 5rem) calc(var(--page-gutter) + var(--safe-right)) 5rem calc(var(--page-gutter) + var(--safe-left));
-    background: var(--bg) url('Fotos hero/roxa com quint.png') center right / cover no-repeat;
+    background: var(--bg);
     /* Linha superior discreta — acabamento editorial */
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
+}
+
+.hero-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .hero::before {
