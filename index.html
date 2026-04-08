@@ -945,8 +945,12 @@
                 <p class="drops-subtitle" data-i18n="drops-sub">Energia no máximo. Clique para assistir.</p>
             </div>
             <div class="drops-header-right">
-                <span class="drops-count">07</span>
-                <span class="drops-count-label">drops</span>
+                <button class="drops-nav-btn" id="drops-prev" aria-label="Anterior">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <button class="drops-nav-btn" id="drops-next" aria-label="Próximo">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
             </div>
         </div>
 
@@ -958,9 +962,6 @@
                         <video src="DROPS/2.mp4" muted loop playsinline preload="none" poster="DROPS/thumbs/2.jpg"></video>
                         <div class="drop-overlay">
                             <span class="drop-num">01</span>
-                            <div class="drop-play-icon">
-                                <i class="fas fa-play"></i>
-                            </div>
                             <div class="drop-bottom">
                                 <div class="drop-label">DROP <em>01</em></div>
                                 <div class="drop-energy"><span></span><span></span><span></span><span></span><span></span></div>
@@ -974,9 +975,6 @@
                         <video src="DROPS/8.mp4" muted loop playsinline preload="none" poster="DROPS/thumbs/8.jpg"></video>
                         <div class="drop-overlay">
                             <span class="drop-num">02</span>
-                            <div class="drop-play-icon">
-                                <i class="fas fa-play"></i>
-                            </div>
                             <div class="drop-bottom">
                                 <div class="drop-label">DROP <em>02</em></div>
                                 <div class="drop-energy"><span></span><span></span><span></span><span></span><span></span></div>
@@ -990,9 +988,6 @@
                         <video src="DROPS/10.mp4" muted loop playsinline preload="none" poster="DROPS/thumbs/10.jpg"></video>
                         <div class="drop-overlay">
                             <span class="drop-num">03</span>
-                            <div class="drop-play-icon">
-                                <i class="fas fa-play"></i>
-                            </div>
                             <div class="drop-bottom">
                                 <div class="drop-label">DROP <em>03</em></div>
                                 <div class="drop-energy"><span></span><span></span><span></span><span></span><span></span></div>
@@ -1006,9 +1001,6 @@
                         <video src="DROPS/11.mp4" muted loop playsinline preload="none" poster="DROPS/thumbs/11.jpg"></video>
                         <div class="drop-overlay">
                             <span class="drop-num">04</span>
-                            <div class="drop-play-icon">
-                                <i class="fas fa-play"></i>
-                            </div>
                             <div class="drop-bottom">
                                 <div class="drop-label">DROP <em>04</em></div>
                                 <div class="drop-energy"><span></span><span></span><span></span><span></span><span></span></div>
@@ -1022,9 +1014,6 @@
                         <video src="DROPS/13.mp4" muted loop playsinline preload="none" poster="DROPS/thumbs/13.jpg"></video>
                         <div class="drop-overlay">
                             <span class="drop-num">05</span>
-                            <div class="drop-play-icon">
-                                <i class="fas fa-play"></i>
-                            </div>
                             <div class="drop-bottom">
                                 <div class="drop-label">DROP <em>05</em></div>
                                 <div class="drop-energy"><span></span><span></span><span></span><span></span><span></span></div>
@@ -1038,9 +1027,6 @@
                         <video src="DROPS/14.mp4" muted loop playsinline preload="none" poster="DROPS/thumbs/14.jpg"></video>
                         <div class="drop-overlay">
                             <span class="drop-num">06</span>
-                            <div class="drop-play-icon">
-                                <i class="fas fa-play"></i>
-                            </div>
                             <div class="drop-bottom">
                                 <div class="drop-label">DROP <em>06</em></div>
                                 <div class="drop-energy"><span></span><span></span><span></span><span></span><span></span></div>
@@ -1054,9 +1040,6 @@
                         <video src="DROPS/16.mp4" muted loop playsinline preload="none" poster="DROPS/thumbs/16.jpg"></video>
                         <div class="drop-overlay">
                             <span class="drop-num">07</span>
-                            <div class="drop-play-icon">
-                                <i class="fas fa-play"></i>
-                            </div>
                             <div class="drop-bottom">
                                 <div class="drop-label">DROP <em>07</em></div>
                                 <div class="drop-energy"><span></span><span></span><span></span><span></span><span></span></div>
@@ -1072,7 +1055,6 @@
                 <div class="drops-progress-track">
                     <div class="drops-progress-bar" id="drops-progress-bar"></div>
                 </div>
-                <span class="drops-progress-hint"><i class="fas fa-arrows-left-right"></i> drag</span>
             </div>
         </div>
     </section>

@@ -1573,6 +1573,22 @@ function initDrops() {
         if (Math.abs(walk) > 5) moved = true;
     });
 
+    // ---- Nav buttons (prev / next) ----
+    const prevBtn = document.getElementById('drops-prev');
+    const nextBtn = document.getElementById('drops-next');
+    const cardWidth = () => {
+        const first = reel.querySelector('.drop-card');
+        if (!first) return 300;
+        const gap = parseFloat(getComputedStyle(reel).gap) || 0;
+        return first.offsetWidth + gap;
+    };
+    prevBtn && prevBtn.addEventListener('click', () => {
+        reel.scrollBy({ left: -cardWidth() * 2, behavior: 'smooth' });
+    });
+    nextBtn && nextBtn.addEventListener('click', () => {
+        reel.scrollBy({ left: cardWidth() * 2, behavior: 'smooth' });
+    });
+
     // ---- Scroll progress bar ----
     const progressBar = document.getElementById('drops-progress-bar');
     function updateProgress() {

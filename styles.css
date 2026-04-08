@@ -1937,26 +1937,39 @@ section {
 .drops-header-right {
     flex-shrink: 0;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.2rem;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
     padding-bottom: 0.4rem;
 }
 
-.drops-count {
-    font-family: var(--font-display);
-    font-size: clamp(3.5rem, 7vw, 6rem);
-    line-height: 1;
-    color: transparent;
-    -webkit-text-stroke: 1px rgba(139, 63, 208, 0.5);
-    letter-spacing: 0.02em;
+.drops-nav-btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(139, 63, 208, 0.55);
+    background: rgba(139, 63, 208, 0.08);
+    color: rgba(176, 110, 255, 0.9);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.25s ease, border-color 0.25s ease,
+                color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+    backdrop-filter: blur(8px);
 }
 
-.drops-count-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-muted);
+.drops-nav-btn:hover {
+    background: rgba(139, 63, 208, 0.3);
+    border-color: rgba(176, 110, 255, 0.9);
+    color: #fff;
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(139, 63, 208, 0.45);
+}
+
+.drops-nav-btn:active {
+    transform: scale(0.95);
 }
 
 .drops-eyebrow {
@@ -2156,40 +2169,6 @@ section {
     }
 }
 
-/* Play icon — anel estilo outline */
-.drop-play-icon {
-    width: 58px;
-    height: 58px;
-    border-radius: 50%;
-    border: 1.5px solid rgba(255,255,255,0.7);
-    background: rgba(0,0,0,0.2);
-    backdrop-filter: blur(10px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    color: #fff;
-    transition: transform 0.3s ease, opacity 0.3s ease,
-                border-color 0.3s ease, background 0.3s ease,
-                box-shadow 0.3s ease;
-    padding-left: 4px;
-}
-
-@media (hover: hover) {
-    .drop-card:hover .drop-play-icon {
-        border-color: rgba(176, 110, 255, 0.9);
-        background: rgba(139, 63, 208, 0.35);
-        box-shadow: 0 0 20px rgba(139, 63, 208, 0.5);
-        transform: scale(1.1);
-    }
-}
-
-.drop-card.is-active .drop-play-icon {
-    opacity: 0;
-    transform: scale(0.6);
-    pointer-events: none;
-}
-
 /* Rodapé do card: label + barras */
 .drop-bottom {
     position: absolute;
@@ -2307,14 +2286,6 @@ section {
     box-shadow: 0 0 8px rgba(176, 110, 255, 0.5);
 }
 
-.drops-progress-hint {
-    font-size: 0.65rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    white-space: nowrap;
-    opacity: 0.6;
-}
 
 /* ---- Modal fullscreen ---- */
 .drop-modal {
@@ -2417,9 +2388,8 @@ section {
         align-items: flex-start;
         gap: 1rem;
     }
-    .drops-header-right { flex-direction: row; align-items: baseline; gap: 0.5rem; }
-    .drops-count { font-size: 2.5rem; }
-    .drops-progress-hint { display: none; }
+    .drops-header-right { flex-direction: row; gap: 0.5rem; }
+    .drops-nav-btn { width: 44px; height: 44px; font-size: 0.9rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
