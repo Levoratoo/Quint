@@ -636,7 +636,7 @@ section {
     font-size: 0.68rem;
     font-weight: 600;
     letter-spacing: 0.14em;
-    color: rgba(196, 170, 235, 0.92);
+    color: rgba(255, 255, 255, 0.95);
     text-transform: uppercase;
     min-height: 1.2em;
 }
@@ -678,7 +678,7 @@ section {
 
 .hero-desc {
     font-size: clamp(0.9rem, 1.5vw, 1.05rem);
-    color: rgba(200, 198, 210, 0.88);
+    color: rgba(255, 255, 255, 0.95);
     line-height: 1.82;
     font-weight: 300;
     letter-spacing: 0.02em;
@@ -697,7 +697,7 @@ section {
 
 .btn-ghost {
     background: transparent;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.95);
     font-size: 0.9rem;
     font-weight: 600;
     letter-spacing: 0.04em;
@@ -710,7 +710,7 @@ section {
     gap: 0.4rem;
 }
 .btn-ghost:hover {
-    color: var(--text);
+    color: #ffffff;
 }
 
 /* ============ RIGHT VISUAL (circular) ============ */
