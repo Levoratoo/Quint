@@ -1622,20 +1622,34 @@ section {
     z-index: 0;
 }
 
-/* Split layout */
+/* Video-first layout */
 .fs-inner {
-    display: grid;
-    grid-template-columns: 340px 1fr;
-    gap: 4rem;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2.4rem;
     position: relative;
     z-index: 1;
+}
+
+/* Top row: foto + info lado a lado */
+.fs-top-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 2.8rem;
+    align-items: center;
 }
 
 /* ---- Poster ---- */
 .fs-poster-wrap {
     position: relative;
     flex-shrink: 0;
+}
+
+.fs-poster {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: center top;
 }
 
 .fs-poster-glow {
@@ -1654,16 +1668,13 @@ section {
 }
 
 .fs-poster {
-    width: 100%;
-    height: auto;
-    border-radius: 16px;
+    border-radius: 14px;
     display: block;
     position: relative;
     z-index: 1;
     box-shadow:
         0 0 0 1px rgba(139, 63, 208,0.2),
         0 20px 60px rgba(0,0,0,0.7);
-    object-fit: cover;
 }
 
 /* "NOVO SET" badge */
@@ -1745,10 +1756,15 @@ section {
     margin-bottom: 2rem;
 }
 
-/* SoundCloud embed */
 .fs-player {
     width: 100%;
-    margin-bottom: 1.8rem;
+    margin-bottom: 0;
+}
+
+.fs-cta-wrap {
+    display: flex;
+    justify-content: center;
+    padding-top: 0.4rem;
 }
 
 /* YouTube cinematic frame */
@@ -1809,24 +1825,25 @@ section {
 
 /* ---- Responsive ---- */
 @media (max-width: 960px) {
-    .fs-inner {
-        grid-template-columns: 260px 1fr;
-        gap: 2.5rem;
+    .fs-top-row {
+        grid-template-columns: 180px 1fr;
+        gap: 2rem;
     }
+    .fs-poster { height: 230px; }
 }
 
 @media (max-width: 700px) {
     .featured-set {
         padding: 5rem 0 4rem;
     }
-    .fs-inner {
+    .fs-top-row {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.6rem;
     }
     .fs-poster-wrap {
-        max-width: 280px;
-        margin: 0 auto;
+        max-width: 240px;
     }
+    .fs-poster { height: 200px; }
     .fs-title-line2 {
         font-size: clamp(2.6rem, 12vw, 4rem);
     }
