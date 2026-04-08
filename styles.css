@@ -1482,8 +1482,8 @@ section {
     transform: translateZ(0);
 }
 
-.lugares-track--left  .lugares-strip { animation: lugares-left  40s linear infinite; }
-.lugares-track--right .lugares-strip { animation: lugares-right 38s linear infinite; }
+.lugares-track--left  .lugares-strip { animation: lugares-left  28s linear infinite; }
+.lugares-track--right .lugares-strip { animation: lugares-right 28s linear infinite; }
 
 .lugares-track--left:hover  .lugares-strip,
 .lugares-track--right:hover .lugares-strip { animation-play-state: paused; }
@@ -1491,8 +1491,8 @@ section {
 /* ---- Items ---- */
 .lugares-item {
     flex-shrink: 0;
-    width: clamp(260px, 22vw, 360px);
-    height: clamp(170px, 14vw, 230px);
+    width: clamp(340px, 30vw, 520px);
+    height: clamp(220px, 20vw, 340px);
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid rgba(255,255,255,0.06);
