@@ -497,6 +497,9 @@ const i18n = {
         'drops-sub'          : 'Energia no máximo. Clique para assistir.',
         'nav-autorais'       : 'Autorais',
         'autorais-tag'       : 'ORIGINAIS',
+        'nav-suporte'        : 'Suporte',
+        'sup-tag'            : 'NAS PISTAS',
+        'sup-title'          : 'SUPORTE',
         'nav-aftermoovie'    : 'After',
         'am-tag'             : 'AFTER MOOVIE',
         'am-title'           : 'FORMATURA',
@@ -650,6 +653,9 @@ const i18n = {
         'drops-tag'          : 'ELECTRONIC',
         'nav-autorais'       : 'Originals',
         'autorais-tag'       : 'ORIGINALS',
+        'nav-suporte'        : 'Support',
+        'sup-tag'            : 'ON THE FLOOR',
+        'sup-title'          : 'SUPPORT',
         'nav-aftermoovie'    : 'After',
         'am-tag'             : 'AFTER MOVIE',
         'am-title'           : 'GRADUATION',
@@ -804,6 +810,9 @@ const i18n = {
         'drops-tag'          : 'ELECTRÓNICA',
         'nav-autorais'       : 'Originales',
         'autorais-tag'       : 'ORIGINALES',
+        'nav-suporte'        : 'Soporte',
+        'sup-tag'            : 'EN LA PISTA',
+        'sup-title'          : 'SOPORTE',
         'nav-aftermoovie'    : 'After',
         'am-tag'             : 'AFTER MOVIE',
         'am-title'           : 'GRADUACIÓN',
@@ -958,6 +967,9 @@ const i18n = {
         'drops-tag'          : '电子音乐',
         'nav-autorais'       : '原创',
         'autorais-tag'       : '原创音乐',
+        'nav-suporte'        : '支持',
+        'sup-tag'            : '舞台上',
+        'sup-title'          : '支持',
         'nav-aftermoovie'    : 'After',
         'am-tag'             : '毕业影片',
         'am-title'           : '毕业典礼',
@@ -1112,6 +1124,9 @@ const i18n = {
         'drops-tag'          : 'ELEKTRONIK',
         'nav-autorais'       : 'Eigene',
         'autorais-tag'       : 'EIGENE TRACKS',
+        'nav-suporte'        : 'Support',
+        'sup-tag'            : 'AUF DEM FLOOR',
+        'sup-title'          : 'SUPPORT',
         'nav-aftermoovie'    : 'After',
         'am-tag'             : 'AFTER MOVIE',
         'am-title'           : 'ABSCHLUSS',
@@ -1267,6 +1282,9 @@ const i18n = {
         'drops-sub'          : 'エネルギー全開。クリックして視聴。',
         'nav-autorais'       : 'オリジナル',
         'autorais-tag'       : 'オリジナル楽曲',
+        'nav-suporte'        : 'サポート',
+        'sup-tag'            : 'フロアで',
+        'sup-title'          : 'サポート',
         'nav-aftermoovie'    : 'アフター',
         'am-tag'             : 'アフタームービー',
         'am-title'           : '卒業',
@@ -1531,6 +1549,7 @@ function init() {
     initTypingEffect();
     initDrops();
     initAutorais();
+    initSupporte();
 }
 
 // ============================================================
@@ -1752,6 +1771,101 @@ function initDrops() {
         const max = reel.scrollWidth - reel.clientWidth;
         const pct = max > 0 ? (reel.scrollLeft / max) * 100 : 0;
         progressBar.style.width = pct + '%';
+    }
+    reel.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+}
+
+// ============================================================
+// SUPORTE DE DJs — carrossel de vídeos de suporte
+// ============================================================
+function initSupporte() {
+    const reel  = document.getElementById('suporte-reel');
+    const modal = document.getElementById('drop-modal');
+    const modalVideo = document.getElementById('drop-modal-video');
+
+    if (!reel) return;
+
+    const cards = reel.querySelectorAll('.sup-card');
+    const isTouch = () => window.matchMedia('(hover: none)').matches;
+
+    // ---- Hover play/pause (desktop only) ----
+    cards.forEach(card => {
+        const video = card.querySelector('video');
+        if (!video) return;
+        card.addEventListener('mouseenter', () => {
+            if (isTouch()) return;
+            video.play().catch(() => {});
+        });
+        card.addEventListener('mouseleave', () => {
+            if (isTouch()) return;
+            video.pause();
+            video.currentTime = 0;
+        });
+    });
+
+    // ---- Click → open modal ----
+    if (modal && modalVideo) {
+        const closeBtn = document.getElementById('drop-modal-close');
+        const backdrop = modal.querySelector('.drop-modal-backdrop');
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                if (reel.classList.contains('is-dragging')) return;
+                const src = card.dataset.src;
+                if (!src) return;
+                modalVideo.src = src;
+                modalVideo.load();
+                modal.classList.add('is-open');
+                document.body.style.overflow = 'hidden';
+                modalVideo.play().catch(() => {});
+            });
+        });
+
+        function closeModal() {
+            modal.classList.remove('is-open');
+            modalVideo.pause();
+            modalVideo.src = '';
+            document.body.style.overflow = '';
+        }
+        closeBtn && closeBtn.addEventListener('click', closeModal);
+        backdrop && backdrop.addEventListener('click', closeModal);
+    }
+
+    // ---- Drag scroll (desktop) ----
+    let isDown = false, startX = 0, scrollLeft = 0;
+    reel.addEventListener('mousedown', e => {
+        isDown = true;
+        startX = e.pageX - reel.offsetLeft;
+        scrollLeft = reel.scrollLeft;
+        reel.classList.add('is-dragging');
+    });
+    reel.addEventListener('mouseleave', () => { isDown = false; reel.classList.remove('is-dragging'); });
+    reel.addEventListener('mouseup',    () => { isDown = false; reel.classList.remove('is-dragging'); });
+    reel.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const walk = (e.pageX - reel.offsetLeft - startX) * 1.3;
+        reel.scrollLeft = scrollLeft - walk;
+    });
+
+    // ---- Nav buttons ----
+    const prevBtn = document.getElementById('suporte-prev');
+    const nextBtn = document.getElementById('suporte-next');
+    const cardWidth = () => {
+        const first = reel.querySelector('.sup-card');
+        if (!first) return 260;
+        return first.offsetWidth + (parseFloat(getComputedStyle(reel).gap) || 0);
+    };
+    prevBtn && prevBtn.addEventListener('click', () => reel.scrollBy({ left: -cardWidth() * 2, behavior: 'smooth' }));
+    nextBtn && nextBtn.addEventListener('click', () => reel.scrollBy({ left:  cardWidth() * 2, behavior: 'smooth' }));
+
+    // ---- Scroll progress bar ----
+    const progressBar = document.getElementById('suporte-progress-bar');
+    function updateProgress() {
+        if (!progressBar) return;
+        const max = reel.scrollWidth - reel.clientWidth;
+        progressBar.style.width = (max > 0 ? (reel.scrollLeft / max) * 100 : 0) + '%';
     }
     reel.addEventListener('scroll', updateProgress, { passive: true });
     updateProgress();
