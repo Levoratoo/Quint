@@ -1452,6 +1452,27 @@ section {
     padding: 6rem 0 7rem;
     background: #050505;
     overflow: hidden;
+    position: relative;
+}
+
+/* Roxo ambiente pulsando no centro da seção */
+.lugares-section::before {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 55%;
+    background: radial-gradient(ellipse, rgba(139, 63, 208, 0.13) 0%, transparent 70%);
+    animation: lugaresAmbient 5s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes lugaresAmbient {
+    from { opacity: 0.5; transform: translateX(-50%) scale(0.95); }
+    to   { opacity: 1;   transform: translateX(-50%) scale(1.1); }
 }
 
 .lugares-header {
@@ -1465,6 +1486,8 @@ section {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
+    position: relative;
+    z-index: 1;
 }
 
 .lugares-track {
@@ -1496,25 +1519,53 @@ section {
     border-radius: 14px;
     overflow: hidden;
     border: none;
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
     position: relative;
+    z-index: 1;
 }
 
+/* Sheen: reflexo de luz que passa ao hover */
+.lugares-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        105deg,
+        transparent 40%,
+        rgba(255,255,255,0.10) 50%,
+        transparent 60%
+    );
+    background-size: 200% 100%;
+    background-position: -100% 0;
+    z-index: 3;
+    pointer-events: none;
+    transition: background-position 0s;
+    border-radius: 14px;
+}
+
+.lugares-item:hover::before {
+    background-position: 200% 0;
+    transition: background-position 0.55s ease;
+}
+
+/* Glow roxo suave na borda */
 .lugares-item::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(139, 63, 208,0.08) 0%, transparent 60%);
+    border-radius: 14px;
+    box-shadow: inset 0 0 0 1px rgba(139, 63, 208, 0);
+    background: linear-gradient(180deg, rgba(139, 63, 208,0.0) 60%, rgba(139, 63, 208,0.18) 100%);
     opacity: 0;
-    transition: opacity 0.35s ease;
-    border-radius: 12px;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+    pointer-events: none;
 }
 
 .lugares-item:hover {
-    transform: scale(1.04);
-    box-shadow: 0 0 28px rgba(139, 63, 208,0.35), 0 8px 32px rgba(0,0,0,0.6);
-    border-color: rgba(139, 63, 208,0.35);
-    z-index: 2;
+    transform: scale(1.04) translateY(-6px);
+    box-shadow: 0 0 32px rgba(139, 63, 208,0.4), 0 16px 40px rgba(0,0,0,0.7);
+    z-index: 4;
 }
 
 .lugares-item:hover::after { opacity: 1; }
