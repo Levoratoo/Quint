@@ -1748,19 +1748,57 @@ section {
 /* SoundCloud embed */
 .fs-player {
     width: 100%;
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 1.6rem;
-    box-shadow:
-        0 0 0 1px rgba(139, 63, 208,0.1),
-        0 8px 28px rgba(0,0,0,0.5);
+    margin-bottom: 1.8rem;
 }
 
-.fs-player iframe {
+/* YouTube cinematic frame */
+.fs-yt-frame {
+    position: relative;
     width: 100%;
-    height: 166px;
+    aspect-ratio: 16 / 9;
+    border-radius: 14px;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* Halo roxo pulsando atrás do vídeo */
+.fs-yt-glow {
+    position: absolute;
+    inset: -20px;
+    border-radius: 24px;
+    background: radial-gradient(ellipse at center, rgba(139, 63, 208, 0.45) 0%, transparent 65%);
+    filter: blur(24px);
+    animation: ytGlowPulse 3.5s ease-in-out infinite alternate;
+    z-index: -1;
+    pointer-events: none;
+}
+
+@keyframes ytGlowPulse {
+    from { opacity: 0.5; transform: scale(0.96); }
+    to   { opacity: 1;   transform: scale(1.04); }
+}
+
+/* Borda roxa fina ao redor */
+.fs-yt-border {
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    border: 1px solid rgba(139, 63, 208, 0.45);
+    z-index: 2;
+    pointer-events: none;
+    box-shadow:
+        inset 0 0 18px rgba(139, 63, 208, 0.12),
+        0 0 28px rgba(139, 63, 208, 0.2);
+}
+
+.fs-yt-frame iframe {
+    width: 100%;
+    height: 100%;
     display: block;
-    border-radius: 12px;
+    border: none;
+    border-radius: 14px;
+    position: relative;
+    z-index: 1;
 }
 
 .fs-cta {
@@ -1795,17 +1833,11 @@ section {
     .fs-desc {
         font-size: 0.88rem;
     }
-    .fs-player iframe {
-        height: 150px;
-    }
 }
 
 @media (max-width: 480px) {
     .fs-poster-wrap {
         max-width: 220px;
-    }
-    .fs-player iframe {
-        height: 140px;
     }
 }
 
