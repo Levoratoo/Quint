@@ -2402,6 +2402,400 @@ section {
 }
 
 /* -------------------------------------------------------
+   AUTORAIS
+------------------------------------------------------- */
+.autorais-section {
+    position: relative;
+    padding: 7rem 0 0;
+    background: #030208;
+    overflow: hidden;
+    border-top: 1px solid rgba(139, 63, 208, 0.12);
+}
+
+.autorais-grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    animation: dropsGrain 0.4s steps(1) infinite;
+}
+
+.autorais-ambient {
+    position: absolute;
+    top: -10%;
+    left: 30%;
+    width: 60%;
+    height: 50%;
+    background: radial-gradient(ellipse, rgba(139, 63, 208, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    animation: dropsAmbient 5s ease-in-out infinite alternate;
+}
+
+/* Header */
+.autorais-header {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(139, 63, 208, 0.18);
+}
+
+.autorais-header-left { flex: 1; }
+
+.autorais-eyebrow { margin-bottom: 1rem; }
+
+.autorais-header-right {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
+    padding-bottom: 0.4rem;
+}
+
+.autorais-nav-btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(139, 63, 208, 0.55);
+    background: rgba(139, 63, 208, 0.08);
+    color: rgba(176, 110, 255, 0.9);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.25s ease, border-color 0.25s ease,
+                color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+    backdrop-filter: blur(8px);
+}
+
+.autorais-nav-btn:hover {
+    background: rgba(139, 63, 208, 0.3);
+    border-color: rgba(176, 110, 255, 0.9);
+    color: #fff;
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(139, 63, 208, 0.45);
+}
+
+.autorais-nav-btn:active { transform: scale(0.95); }
+
+/* Título com glitch cromático */
+.autorais-title {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 11vw, 9rem);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 0.85;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 0;
+    text-shadow: 0 0 60px rgba(139, 63, 208, 0.35);
+}
+
+.autorais-title::before,
+.autorais-title::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    letter-spacing: inherit;
+    pointer-events: none;
+    animation: dropsGlitch 8s infinite;
+}
+
+.autorais-title::before {
+    color: #0ff;
+    clip-path: polygon(0 15%, 100% 15%, 100% 35%, 0 35%);
+    animation-delay: 0s;
+    mix-blend-mode: screen;
+}
+
+.autorais-title::after {
+    color: #f0f;
+    clip-path: polygon(0 60%, 100% 60%, 100% 75%, 0 75%);
+    animation-delay: 0.05s;
+    mix-blend-mode: screen;
+}
+
+/* Reel */
+.autorais-reel-wrap {
+    position: relative;
+    z-index: 1;
+    mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%);
+}
+
+.autorais-reel {
+    display: flex;
+    gap: 1.4rem;
+    padding: 1.5rem 5vw 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    cursor: grab;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    will-change: transform;
+}
+
+.autorais-reel::-webkit-scrollbar { display: none; }
+.autorais-reel.is-dragging { cursor: grabbing; scroll-behavior: auto; }
+
+/* Cards quadrados */
+.autoral-card {
+    flex-shrink: 0;
+    width: clamp(160px, 18vw, 240px);
+    aspect-ratio: 1 / 1;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(139, 63, 208, 0.15);
+    scroll-snap-align: start;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                border-color 0.35s ease,
+                box-shadow 0.35s ease,
+                filter 0.35s ease;
+    background: #09060f;
+    filter: brightness(0.9) saturate(0.85);
+}
+
+.autoral-card.is-active {
+    border-color: rgba(139, 63, 208, 0.85) !important;
+    box-shadow:
+        0 0 0 1px rgba(139, 63, 208, 0.4),
+        0 0 28px rgba(139, 63, 208, 0.55),
+        0 0 60px rgba(139, 63, 208, 0.2),
+        0 16px 40px rgba(0,0,0,0.8) !important;
+    filter: brightness(1.05) saturate(1.1) !important;
+}
+
+@media (hover: hover) {
+    .autorais-reel:hover .autoral-card {
+        filter: brightness(0.7) saturate(0.7);
+    }
+    .autorais-reel:hover .autoral-card:hover {
+        filter: brightness(1.05) saturate(1.1);
+        transform: scale(1.04) translateY(-8px);
+        border-color: rgba(139, 63, 208, 0.65);
+        box-shadow:
+            0 0 22px rgba(139, 63, 208, 0.45),
+            0 16px 40px rgba(0,0,0,0.7);
+        z-index: 2;
+    }
+}
+
+.autoral-thumb {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.autoral-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+@media (hover: hover) {
+    .autoral-card:hover .autoral-thumb img {
+        transform: scale(1.06);
+    }
+}
+
+/* Overlay: título + ícone */
+.autoral-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 35%,
+        rgba(6,4,14,0.88) 100%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 14px 16px;
+    gap: 4px;
+    transition: background 0.3s ease;
+}
+
+.autoral-card.is-active .autoral-card-overlay {
+    background: linear-gradient(
+        to bottom,
+        rgba(139, 63, 208, 0.12) 0%,
+        rgba(6,4,14,0.92) 100%
+    );
+}
+
+.autoral-card-title {
+    font-family: var(--font-display);
+    font-size: clamp(0.9rem, 1.6vw, 1.2rem);
+    letter-spacing: 0.06em;
+    color: #fff;
+    line-height: 1.1;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.8);
+}
+
+.autoral-card-hint {
+    font-size: 0.75rem;
+    color: rgba(176, 110, 255, 0.75);
+    transition: color 0.3s ease, opacity 0.3s ease;
+    opacity: 0.7;
+}
+
+.autoral-card.is-active .autoral-card-hint {
+    color: rgba(176, 110, 255, 1);
+    opacity: 1;
+}
+
+/* Sheen */
+.autoral-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        115deg,
+        transparent 30%,
+        rgba(255,255,255,0.06) 50%,
+        transparent 70%
+    );
+    background-size: 200% 100%;
+    background-position: -100% 0;
+    z-index: 3;
+    pointer-events: none;
+    transition: background-position 0s;
+    border-radius: 14px;
+}
+
+@media (hover: hover) {
+    .autoral-card:hover::before {
+        background-position: 200% 0;
+        transition: background-position 0.55s ease;
+    }
+}
+
+/* Progress bar */
+.autorais-progress-wrap {
+    display: flex;
+    align-items: center;
+    margin-top: 1.4rem;
+}
+
+.autorais-progress-track {
+    flex: 1;
+    height: 2px;
+    background: rgba(139, 63, 208, 0.12);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.autorais-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, rgba(139, 63, 208, 0.8), rgba(176, 110, 255, 1));
+    border-radius: 2px;
+    transition: width 0.1s linear;
+    box-shadow: 0 0 8px rgba(176, 110, 255, 0.5);
+}
+
+/* Player Spotify expansível */
+.autoral-player {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.35s ease,
+                padding 0.45s ease;
+    padding: 0;
+    border-top: 1px solid transparent;
+}
+
+.autoral-player.is-open {
+    max-height: 160px;
+    opacity: 1;
+    padding: 1.6rem 0 2rem;
+    border-top-color: rgba(139, 63, 208, 0.15);
+}
+
+.autoral-player-inner {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+}
+
+.autoral-player-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    flex-shrink: 0;
+}
+
+.autoral-player-icon {
+    font-size: 1.4rem;
+    color: #1DB954;
+    line-height: 1;
+}
+
+.autoral-player-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.85);
+    white-space: nowrap;
+}
+
+.autoral-iframe-wrap {
+    flex: 1;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(139, 63, 208, 0.2);
+    box-shadow: 0 0 20px rgba(139, 63, 208, 0.15);
+}
+
+.autoral-iframe-wrap iframe {
+    display: block;
+    width: 100%;
+    border-radius: 12px;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+    .autorais-section { padding: 5rem 0 0; }
+    .autorais-header { flex-direction: column; align-items: flex-start; gap: 1.2rem; }
+    .autorais-nav-btn { width: 44px; height: 44px; font-size: 0.9rem; }
+    .autoral-card { width: clamp(140px, 42vw, 185px); }
+    .autoral-player-meta { display: none; }
+    .autoral-player.is-open { max-height: 120px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .autorais-grain,
+    .autorais-ambient,
+    .autorais-title::before,
+    .autorais-title::after { animation: none; }
+    .autoral-card { transition: none; }
+    .autoral-player { transition: none; }
+}
+
+/* -------------------------------------------------------
    MUSIC
 ------------------------------------------------------- */
 .music {

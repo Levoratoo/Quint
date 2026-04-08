@@ -495,6 +495,8 @@ const i18n = {
         'nav-drops'          : 'Drops',
         'drops-tag'          : 'ELETRÔNICA',
         'drops-sub'          : 'Energia no máximo. Clique para assistir.',
+        'nav-autorais'       : 'Autorais',
+        'autorais-tag'       : 'ORIGINAIS',
         'hero-desc'          : 'Sets construídos a partir da identidade musical.<br>Cada pista, uma história. Cada drop, uma experiência.',
         'hero-listen'        : 'Ouvir Agora',
         'badge-pressure'     : 'Pressão de Pista',
@@ -639,6 +641,8 @@ const i18n = {
         'nav-musicas'        : 'Music',
         'nav-drops'          : 'Drops',
         'drops-tag'          : 'ELECTRONIC',
+        'nav-autorais'       : 'Originals',
+        'autorais-tag'       : 'ORIGINALS',
         'drops-sub'          : 'Maximum energy. Click to watch.',
         'hero-desc'          : 'Sets built from musical identity.<br>Every track, a story. Every drop, an experience.',
         'hero-listen'        : 'Listen Now',
@@ -784,6 +788,8 @@ const i18n = {
         'nav-musicas'        : 'Música',
         'nav-drops'          : 'Drops',
         'drops-tag'          : 'ELECTRÓNICA',
+        'nav-autorais'       : 'Originales',
+        'autorais-tag'       : 'ORIGINALES',
         'drops-sub'          : 'Energía al máximo. Haz clic para ver.',
         'hero-desc'          : 'Sets construidos desde la identidad musical.<br>Cada pista, una historia. Cada drop, una experiencia.',
         'hero-listen'        : 'Escuchar Ahora',
@@ -929,6 +935,8 @@ const i18n = {
         'nav-musicas'        : '音乐',
         'nav-drops'          : 'Drops',
         'drops-tag'          : '电子音乐',
+        'nav-autorais'       : '原创',
+        'autorais-tag'       : '原创音乐',
         'drops-sub'          : '能量拉满。点击观看。',
         'hero-desc'          : '从音乐身份构建的曲目集。<br>每首曲目，一个故事。每次降拍，一次体验。',
         'hero-listen'        : '立即收听',
@@ -1074,6 +1082,8 @@ const i18n = {
         'nav-musicas'        : 'Musik',
         'nav-drops'          : 'Drops',
         'drops-tag'          : 'ELEKTRONIK',
+        'nav-autorais'       : 'Eigene',
+        'autorais-tag'       : 'EIGENE TRACKS',
         'drops-sub'          : 'Volle Energie. Klicken zum Ansehen.',
         'hero-desc'          : 'Sets aufgebaut aus musikalischer Identität.<br>Jeder Track, eine Geschichte. Jeder Drop, ein Erlebnis.',
         'hero-listen'        : 'Jetzt hören',
@@ -1220,6 +1230,8 @@ const i18n = {
         'nav-drops'          : 'ドロップス',
         'drops-tag'          : 'エレクトロニカ',
         'drops-sub'          : 'エネルギー全開。クリックして視聴。',
+        'nav-autorais'       : 'オリジナル',
+        'autorais-tag'       : 'オリジナル楽曲',
         'hero-desc'          : '音楽的アイデンティティから構築されたセット。<br>すべてのトラックに物語がある。すべてのドロップに体験がある。',
         'hero-listen'        : '今すぐ聴く',
         'badge-pressure'     : 'フロアの圧力',
@@ -1476,6 +1488,108 @@ function init() {
     initI18n();
     initTypingEffect();
     initDrops();
+    initAutorais();
+}
+
+// ============================================================
+// AUTORAIS — carrossel de músicas originais + player Spotify
+// ============================================================
+function initAutorais() {
+    const reel       = document.getElementById('autorais-reel');
+    const player     = document.getElementById('autoral-player');
+    const iframe     = document.getElementById('autoral-iframe');
+    const playerName = document.getElementById('autoral-player-name');
+    const progressBar = document.getElementById('autorais-progress-bar');
+
+    if (!reel) return;
+
+    const cards = reel.querySelectorAll('.autoral-card');
+    let activeCard = null;
+
+    // ---- Click: abre / fecha player ----
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            if (reel.classList.contains('is-dragging')) return;
+
+            const isSame = card === activeCard;
+
+            // Desativa card anterior
+            if (activeCard) {
+                activeCard.classList.remove('is-active');
+                activeCard = null;
+            }
+
+            if (isSame) {
+                // Fechar player
+                if (player) { player.classList.remove('is-open'); }
+                if (iframe)  { setTimeout(() => { iframe.src = ''; }, 400); }
+                return;
+            }
+
+            // Ativa novo card
+            card.classList.add('is-active');
+            activeCard = card;
+
+            const trackId = card.dataset.trackId;
+            const title   = card.dataset.title || '';
+
+            if (playerName) playerName.textContent = title;
+            if (iframe) {
+                iframe.src = `https://open.spotify.com/embed/track/${trackId}?utm_source=generator&theme=0`;
+            }
+            if (player) {
+                player.classList.add('is-open');
+                // Scroll suave para o player
+                setTimeout(() => {
+                    player.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 300);
+            }
+        });
+    });
+
+    // ---- Nav buttons ----
+    const prevBtn = document.getElementById('autorais-prev');
+    const nextBtn = document.getElementById('autorais-next');
+    const cardStep = () => {
+        const first = reel.querySelector('.autoral-card');
+        if (!first) return 260;
+        const gap = parseFloat(getComputedStyle(reel).gap) || 0;
+        return first.offsetWidth + gap;
+    };
+    prevBtn && prevBtn.addEventListener('click', () => {
+        reel.scrollBy({ left: -cardStep() * 2, behavior: 'smooth' });
+    });
+    nextBtn && nextBtn.addEventListener('click', () => {
+        reel.scrollBy({ left: cardStep() * 2, behavior: 'smooth' });
+    });
+
+    // ---- Scroll progress ----
+    function updateProgress() {
+        if (!progressBar) return;
+        const max = reel.scrollWidth - reel.clientWidth;
+        const pct = max > 0 ? (reel.scrollLeft / max) * 100 : 0;
+        progressBar.style.width = pct + '%';
+    }
+    reel.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+
+    // ---- Drag scroll (desktop) ----
+    let isDown = false, startX = 0, scrollLeft = 0;
+
+    reel.addEventListener('mousedown', e => {
+        isDown = true;
+        startX = e.pageX - reel.offsetLeft;
+        scrollLeft = reel.scrollLeft;
+        reel.classList.add('is-dragging');
+    });
+    reel.addEventListener('mouseleave', () => { isDown = false; reel.classList.remove('is-dragging'); });
+    reel.addEventListener('mouseup',    () => { isDown = false; reel.classList.remove('is-dragging'); });
+    reel.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - reel.offsetLeft;
+        reel.scrollLeft = scrollLeft - (x - startX) * 1.3;
+    });
 }
 
 // ============================================================
