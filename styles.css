@@ -1736,6 +1736,27 @@ section {
     box-shadow: 0 0 6px rgba(255, 43, 43, 0.8);
 }
 
+.fs-badge-dot--live {
+    background: #ff3b3b;
+    box-shadow: 0 0 10px rgba(255, 59, 59, 0.9);
+    animation: pulseDot 1.2s ease-in-out infinite;
+}
+
+.featured-set--park-live {
+    background: linear-gradient(180deg, var(--bg) 0%, #0a0614 50%, var(--bg) 100%);
+}
+
+.featured-set--park-live .fs-bg-glow {
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(176, 110, 255, 0.12) 0%, transparent 70%);
+}
+
+.featured-set--park-live .fs-title-line2 {
+    background: linear-gradient(90deg, #fff 0%, var(--primary-light) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
 /* ---- Right content ---- */
 .fs-eyebrow {
     margin-bottom: 0.8rem;
